@@ -122,8 +122,8 @@ export function Navbar() {
     <>
       <header
         className={cn(
-          "fixed top-0 left-0 right-0 z-50 w-full bg-[#0B192C] border-b border-[#B8945E]/20 shadow-sm transition-all duration-300",
-          scrolled ? "bg-[#0B192C]/98 backdrop-blur-md" : "bg-[#0B192C]"
+          "fixed top-0 left-0 right-0 z-50 w-full bg-[#050505] border-b border-[rgba(255,255,255,0.07)] shadow-sm transition-all duration-300",
+          scrolled ? "bg-[#050505]/88 backdrop-blur-[14px]" : "bg-[#050505]"
         )}
       >
         {/* --- DESKTOP TWO-ROW NAVBAR (lg and above) --- */}
@@ -135,26 +135,16 @@ export function Navbar() {
               <a
                 href="/#home"
                 onClick={(e) => handleScrollTo(e, "/#home")}
-                className="flex items-center gap-3 group focus:outline-none"
+                className="flex items-center group focus:outline-none"
               >
-                <div className="relative h-11 w-11 group-hover:scale-105 transition-transform flex items-center justify-center shrink-0">
-                  <Image
-                    src="/images/Untitled design (2).png"
-                    alt="Trendy Fortune Overseas logo"
-                    fill
-                    sizes="44px"
-                    className="object-contain"
-                    priority
-                  />
-                </div>
-                <div className="flex flex-col items-start select-none">
-                  <span className="font-serif font-extrabold text-base lg:text-[17px] text-[#B8945E] uppercase tracking-wide leading-none" style={{ fontFamily: "'Times New Roman', Times, serif" }}>
-                    TRENDY FORTUNE
-                  </span>
-                  <span className="font-serif text-[10px] lg:text-[11px] text-[#B8945E] uppercase tracking-[0.18em] text-center leading-none mt-1.5" style={{ fontFamily: "'Times New Roman', Times, serif" }}>
-                    OVERSEAS
-                  </span>
-                </div>
+                <Image
+                  src="/tricks-trading-logo.png"
+                  alt="Tricks & Trading Logo"
+                  width={220}
+                  height={80}
+                  className="h-auto w-[180px] md:w-[220px] object-contain group-hover:scale-102 transition-transform duration-200"
+                  priority
+                />
               </a>
             </div>
 
@@ -164,25 +154,25 @@ export function Navbar() {
               
               <a
                 href="/appointment"
-                className="inline-flex items-center gap-2 h-10 px-4 rounded-xl text-sm font-semibold text-white bg-transparent border border-[#B8945E]/50 hover:border-[#B8945E] hover:bg-white/5 transition-all duration-300 whitespace-nowrap"
+                className="inline-flex items-center gap-2 h-10 px-4 rounded-xl text-sm font-semibold text-[#F5F1E8] bg-transparent border border-[rgba(184,155,114,0.28)] hover:bg-[rgba(184,155,114,0.10)] transition-all duration-300 whitespace-nowrap"
               >
-                <Calendar className="h-4 w-4 text-[#B8945E]" />
+                <Calendar className="h-4 w-4 text-[#B89B72]" />
                 {t("bookAppointment") || "Book Appointment"}
               </a>
 
               <Button
                 onClick={handleApplyClick}
                 variant="primary"
-                className="gap-1.5 group h-10 px-5 whitespace-nowrap bg-[#B8945E] text-[#071426] hover:bg-[#A37F48] hover:shadow-[0_0_15px_rgba(184,148,94,0.35)] hover:-translate-y-0.5 transition-all duration-300 border border-white/10 font-bold text-sm"
+                className="gap-1.5 group h-10 px-5 whitespace-nowrap"
               >
                 {t("applyNow")}
-                <ArrowUpRight className="h-4 w-4 text-[#071426] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                <ArrowUpRight className="h-4 w-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </Button>
             </div>
           </div>
 
           {/* Bottom Row: Height 48px */}
-          <div className="h-[48px] border-t border-[#B8945E]/15 flex items-center justify-center w-full">
+          <div className="h-[48px] border-t border-[rgba(255,255,255,0.07)] flex items-center justify-center w-full">
             <nav className="flex items-center gap-6 xl:gap-8 justify-center whitespace-nowrap min-w-0">
               {NAV_LINKS.map((link) => {
                 const hashIndex = link.href.indexOf("#");
@@ -195,15 +185,15 @@ export function Navbar() {
                     href={link.href}
                     onClick={(e) => handleScrollTo(e, link.href)}
                     className={cn(
-                      "text-[13px] xl:text-sm font-medium transition-colors hover:text-[#B8945E] relative py-1 focus:outline-none whitespace-nowrap",
-                      isActive ? "text-[#B8945E] font-semibold" : "text-white/85"
+                      "text-[13px] xl:text-sm font-medium transition-colors hover:text-[#C8AD85] relative py-1 focus:outline-none whitespace-nowrap",
+                      isActive ? "text-[#B89B72] font-semibold" : "text-[#B8B2A7]"
                     )}
                   >
                     {t(navKey)}
                     {isActive && (
                       <motion.div
                         layoutId="activeNavIndicator"
-                        className="absolute bottom-[-6px] left-0 right-0 h-0.5 bg-[#B8945E]"
+                        className="absolute bottom-[-6px] left-0 right-0 h-0.5 bg-[#B89B72]"
                         transition={{ type: "spring", stiffness: 380, damping: 30 }}
                       />
                     )}
@@ -215,16 +205,16 @@ export function Navbar() {
               <a
                 href="/pay"
                 className={cn(
-                  "text-[13px] xl:text-sm font-medium transition-colors hover:text-[#B8945E] relative py-1 focus:outline-none whitespace-nowrap flex items-center gap-1.5",
-                  currentActiveSection === "pay" || pathname === "/pay" ? "text-[#B8945E] font-semibold" : "text-white/85"
+                  "text-[13px] xl:text-sm font-medium transition-colors hover:text-[#C8AD85] relative py-1 focus:outline-none whitespace-nowrap flex items-center gap-1.5",
+                  currentActiveSection === "pay" || pathname === "/pay" ? "text-[#B89B72] font-semibold" : "text-[#B8B2A7]"
                 )}
               >
-                <CreditCard className="h-3.5 w-3.5" />
+                <CreditCard className="h-3.5 w-3.5 text-[#B8B2A7]" />
                 {t("completePayment") || "Complete Payment"}
                 {(currentActiveSection === "pay" || pathname === "/pay") && (
                   <motion.div
                     layoutId="activeNavIndicator"
-                    className="absolute bottom-[-6px] left-0 right-0 h-0.5 bg-[#B8945E]"
+                    className="absolute bottom-[-6px] left-0 right-0 h-0.5 bg-[#B89B72]"
                     transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
                 )}
@@ -240,26 +230,16 @@ export function Navbar() {
             <a
               href="/#home"
               onClick={(e) => handleScrollTo(e, "/#home")}
-              className="flex items-center gap-2 xs:gap-3 group focus:outline-none min-w-0"
+              className="flex items-center group focus:outline-none min-w-0"
             >
-              <div className="relative h-9 w-9 xs:h-10 xs:w-10 group-hover:scale-105 transition-transform flex items-center justify-center shrink-0">
-                <Image
-                  src="/images/Untitled design (2).png"
-                  alt="Trendy Fortune Overseas logo"
-                  fill
-                  sizes="(max-width: 479px) 36px, 40px"
-                  className="object-contain"
-                  priority
-                />
-              </div>
-              <div className="flex flex-col items-start select-none min-w-0">
-                <span className="font-serif font-extrabold text-[10.5px] xs:text-[12px] sm:text-[14px] text-[#B8945E] uppercase tracking-wide leading-none truncate" style={{ fontFamily: "'Times New Roman', Times, serif" }}>
-                  TRENDY FORTUNE
-                </span>
-                <span className="font-serif text-[7.5px] xs:text-[8px] sm:text-[9.5px] text-[#B8945E] uppercase tracking-[0.18em] text-center leading-none mt-1 sm:mt-1.5 truncate" style={{ fontFamily: "'Times New Roman', Times, serif" }}>
-                  OVERSEAS
-                </span>
-              </div>
+              <Image
+                src="/tricks-trading-logo.png"
+                alt="Tricks & Trading Logo"
+                width={150}
+                height={55}
+                className="h-auto w-[130px] xs:w-[150px] object-contain group-hover:scale-102 transition-transform duration-200"
+                priority
+              />
             </a>
           </div>
 
@@ -288,7 +268,7 @@ export function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-x-0 top-[64px] z-30 lg:hidden border-b border-slate-100 bg-white/95 backdrop-blur-lg shadow-xl"
+            className="fixed inset-x-0 top-[64px] z-30 lg:hidden border-b border-[rgba(255,255,255,0.07)] bg-[#050505]/95 backdrop-blur-[14px] shadow-xl"
           >
             <div className="px-4 pt-4 pb-8 space-y-6">
               <nav className="flex flex-col gap-2">
@@ -305,8 +285,8 @@ export function Navbar() {
                       className={cn(
                         "text-base font-medium px-4 py-2.5 rounded-xl transition-colors",
                         isActive
-                          ? "bg-slate-50 text-[#B6925B] font-semibold"
-                          : "text-slate-600 hover:bg-slate-50 hover:text-[#0B192C]"
+                          ? "bg-[#101010] text-[#B89B72] font-semibold"
+                          : "text-[#B8B2A7] hover:bg-[#101010] hover:text-[#F5F1E8]"
                       )}
                     >
                       {t(navKey)}
@@ -321,28 +301,28 @@ export function Navbar() {
                   className={cn(
                     "text-base font-medium px-4 py-2.5 rounded-xl transition-colors flex items-center gap-2.5",
                     currentActiveSection === "pay" || pathname === "/pay"
-                      ? "bg-slate-50 text-[#B6925B] font-semibold"
-                      : "text-slate-600 hover:bg-slate-50 hover:text-[#0B192C]"
+                      ? "bg-[#101010] text-[#B89B72] font-semibold"
+                      : "text-[#B8B2A7] hover:bg-[#101010] hover:text-[#F5F1E8]"
                   )}
                 >
-                  <CreditCard className="h-4 w-4 text-[#B8945E]" />
+                  <CreditCard className="h-4 w-4 text-[#B8B2A7]" />
                   <span>{t("completePayment") || "Complete Payment"}</span>
                 </a>
               </nav>
               
-              <div className="px-4 pt-4 border-t border-slate-100 flex flex-col gap-3">
+              <div className="px-4 pt-4 border-t border-[rgba(255,255,255,0.07)] flex flex-col gap-3">
                 <LanguageSwitcher isMobile={true} />
                 
                 <a
                   href="/appointment"
                   onClick={() => setIsOpen(false)}
-                  className="w-full flex items-center justify-center gap-2 h-11 rounded-xl text-sm font-semibold text-[#0B192C] border border-slate-200 hover:border-slate-300 bg-slate-50 hover:bg-slate-100 transition-all"
+                  className="w-full flex items-center justify-center gap-2 h-11 rounded-xl text-sm font-semibold text-[#F5F1E8] border border-[rgba(184,155,114,0.28)] hover:bg-[rgba(184,155,114,0.10)] bg-transparent transition-all"
                 >
-                  <Calendar className="h-4 w-4 text-[#B8945E]" />
+                  <Calendar className="h-4 w-4 text-[#B89B72]" />
                   {t("bookAppointment") || "Book Appointment"}
                 </a>
                 
-                <Button onClick={handleApplyClick} variant="primary" className="w-full justify-center bg-[#B8945E] text-[#071426] hover:bg-[#A37F48] font-bold h-11 rounded-xl border border-white/10">
+                <Button onClick={handleApplyClick} variant="primary" className="w-full justify-center h-11 rounded-xl">
                   {t("applyNow")}
                 </Button>
               </div>

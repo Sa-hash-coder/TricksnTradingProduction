@@ -64,26 +64,26 @@ function ToastContainer({ toasts, dismiss }: ToastContainerProps) {
         <div
           key={t.id}
           className={cn(
-            "flex items-start gap-3 p-4 rounded-xl shadow-lg border animate-in slide-in-from-bottom duration-300 bg-white",
+            "flex items-start gap-3 p-4 rounded-xl shadow-lg border animate-in slide-in-from-bottom duration-300 bg-[#111111]",
             {
-              "border-emerald-100 bg-emerald-50 text-emerald-900": t.type === "success",
-              "border-rose-100 bg-rose-50 text-rose-900": t.type === "error",
-              "border-blue-100 bg-blue-50 text-blue-900": t.type === "info",
+              "border-emerald-900/40 bg-emerald-950/20 text-emerald-400": t.type === "success",
+              "border-rose-900/40 bg-rose-950/20 text-rose-400": t.type === "error",
+              "border-blue-900/40 bg-blue-950/20 text-blue-400": t.type === "info",
             }
           )}
         >
-          {t.type === "success" && <CheckCircle2 className="h-5 w-5 text-emerald-600 shrink-0 mt-0.5" />}
-          {t.type === "error" && <AlertTriangle className="h-5 w-5 text-rose-600 shrink-0 mt-0.5" />}
-          {t.type === "info" && <CheckCircle2 className="h-5 w-5 text-blue-600 shrink-0 mt-0.5" />}
+          {t.type === "success" && <CheckCircle2 className="h-5 w-5 text-emerald-500 shrink-0 mt-0.5" />}
+          {t.type === "error" && <AlertTriangle className="h-5 w-5 text-rose-500 shrink-0 mt-0.5" />}
+          {t.type === "info" && <CheckCircle2 className="h-5 w-5 text-blue-500 shrink-0 mt-0.5" />}
 
           <div className="flex-1">
-            <h4 className="font-semibold text-sm leading-tight">{t.title}</h4>
-            {t.description && <p className="text-xs mt-1 opacity-90 leading-snug">{t.description}</p>}
+            <h4 className="font-semibold text-sm leading-tight text-[#F5F5F5]">{t.title}</h4>
+            {t.description && <p className="text-xs mt-1 text-[#A3A3A3] leading-snug">{t.description}</p>}
           </div>
 
           <button
             onClick={() => dismiss(t.id)}
-            className="text-slate-400 hover:text-slate-600 cursor-pointer shrink-0 mt-0.5"
+            className="text-[#A3A3A3] hover:text-[#F5F5F5] cursor-pointer shrink-0 mt-0.5"
             aria-label="Close notification"
           >
             <X className="h-4 w-4" />

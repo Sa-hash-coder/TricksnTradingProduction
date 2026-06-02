@@ -133,7 +133,7 @@ export function LeadForm() {
   };
 
   return (
-    <section id="for-employers" className="py-20 bg-slate-50 relative overflow-hidden">
+    <section id="for-employers" className="py-20 bg-[#080808] relative overflow-hidden border-t border-[rgba(255,255,255,0.07)]">
       {/* Anchor targets for hash navigation and scrolling */}
       <div id="job-seeker" className="absolute top-0 left-0 h-0 w-0 pointer-events-none" />
       <div id="employer" className="absolute top-0 left-0 h-0 w-0 pointer-events-none" />
@@ -143,13 +143,13 @@ export function LeadForm() {
         
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-12 space-y-4">
-          <div className="text-xs font-bold text-[#B6925B] tracking-widest uppercase">
+          <div className="text-xs font-bold text-[#B89B72] tracking-widest uppercase">
             {t("tag")}
           </div>
-          <h2 id="lead-forms" className="text-3xl md:text-4xl font-display font-extrabold text-[#0B192C]">
+          <h2 id="lead-forms" className="text-3xl md:text-4xl font-display font-extrabold text-[#F5F1E8]">
             {t("title")}
           </h2>
-          <p className="text-sm md:text-base text-slate-500 leading-relaxed font-sans">
+          <p className="text-sm md:text-base text-[#B8B2A7] leading-relaxed font-sans">
             {t("desc")}
           </p>
         </div>
@@ -157,7 +157,7 @@ export function LeadForm() {
         {/* Form Container */}
         <Tabs defaultValue="seeker" value={activeTab} onValueChange={setActiveTab} className="w-full">
           <div className="flex justify-center mb-8">
-            <TabsList className="grid grid-cols-2 bg-slate-100 border border-slate-200/50 p-1 rounded-full w-full max-w-sm sm:max-w-md h-12">
+            <TabsList className="grid grid-cols-2 bg-[#050505] border border-white/8 p-1 rounded-full w-full max-w-sm sm:max-w-md h-12">
               <TabsTrigger
                 id="tab-seeker"
                 value="seeker"
@@ -177,7 +177,7 @@ export function LeadForm() {
             </TabsList>
           </div>
 
-          <div className="bg-white border border-slate-100 rounded-3xl p-6 md:p-10 shadow-xl shadow-slate-900/5">
+          <div className="bg-[#111111] border border-white/8 rounded-3xl p-6 md:p-10 shadow-xl">
             <AnimatePresence mode="wait">
               {/* Job Seeker Form Tab */}
               {activeTab === "seeker" ? (
@@ -203,7 +203,7 @@ export function LeadForm() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {/* Company Name */}
                     <div className="space-y-2">
-                      <label htmlFor="companyName" className="text-sm font-semibold text-slate-700">
+                      <label htmlFor="companyName" className="text-sm font-semibold text-[#B0B0B0]">
                         Company Name <span className="text-red-500">*</span>
                       </label>
                       <Input
@@ -219,7 +219,7 @@ export function LeadForm() {
 
                     {/* Contact Person */}
                     <div className="space-y-2">
-                      <label htmlFor="contactPerson" className="text-sm font-semibold text-slate-700">
+                      <label htmlFor="contactPerson" className="text-sm font-semibold text-[#B0B0B0]">
                         Contact Person <span className="text-red-500">*</span>
                       </label>
                       <Input
@@ -237,7 +237,7 @@ export function LeadForm() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {/* Phone Number */}
                     <div className="space-y-2">
-                      <label htmlFor="employerPhone" className="text-sm font-semibold text-slate-700">
+                      <label htmlFor="employerPhone" className="text-sm font-semibold text-[#B0B0B0]">
                         Business Phone Number <span className="text-red-500">*</span>
                       </label>
                       <Input
@@ -254,7 +254,7 @@ export function LeadForm() {
 
                     {/* Email */}
                     <div className="space-y-2">
-                      <label htmlFor="employerEmail" className="text-sm font-semibold text-slate-700">
+                      <label htmlFor="employerEmail" className="text-sm font-semibold text-[#B0B0B0]">
                         Business Email <span className="text-red-500">*</span>
                       </label>
                       <Input
@@ -273,25 +273,25 @@ export function LeadForm() {
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     {/* Industry dropdown */}
                     <div className="space-y-2">
-                      <label htmlFor="industry" className="text-sm font-semibold text-slate-700">
+                      <label htmlFor="industry" className="text-sm font-semibold text-[#B0B0B0]">
                         Industry Sector <span className="text-red-500">*</span>
                       </label>
                       <div className="relative">
                         <select
                           id="industry"
-                          className={`flex h-11 w-full rounded-xl border border-slate-200 bg-white px-4 py-2 text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0B192C] focus-visible:ring-offset-2 appearance-none cursor-pointer ${
+                          className={`flex h-11 w-full rounded-xl border border-[rgba(255,255,255,0.09)] bg-[#101010] text-[#F5F1E8] px-4 py-2 text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B89B72] focus-visible:ring-offset-2 appearance-none cursor-pointer ${
                             employerForm.formState.errors.industry ? "border-red-500" : ""
                           }`}
                           {...employerForm.register("industry")}
                         >
-                          <option value="">Select industry...</option>
+                          <option value="" className="bg-[#111111]">Select industry...</option>
                           {INDUSTRIES.map((ind) => (
-                            <option key={ind.id} value={ind.name}>
+                            <option key={ind.id} value={ind.name} className="bg-[#111111]">
                               {ind.name}
                             </option>
                           ))}
                         </select>
-                        <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
+                        <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-[#737373]">
                           ▼
                         </div>
                       </div>
@@ -302,7 +302,7 @@ export function LeadForm() {
 
                     {/* Workers required */}
                     <div className="space-y-2">
-                      <label htmlFor="workersRequired" className="text-sm font-semibold text-slate-700">
+                      <label htmlFor="workersRequired" className="text-sm font-semibold text-[#B0B0B0]">
                         Workers Needed <span className="text-red-500">*</span>
                       </label>
                       <Input
@@ -320,7 +320,7 @@ export function LeadForm() {
 
                     {/* Country Location */}
                     <div className="space-y-2">
-                      <label htmlFor="location" className="text-sm font-semibold text-slate-700">
+                      <label htmlFor="location" className="text-sm font-semibold text-[#B0B0B0]">
                         Deploy Location / Country <span className="text-red-500">*</span>
                       </label>
                       <Input
@@ -337,7 +337,7 @@ export function LeadForm() {
 
                   {/* Required Job Roles */}
                   <div className="space-y-2">
-                    <label htmlFor="requiredJobRoles" className="text-sm font-semibold text-slate-700">
+                    <label htmlFor="requiredJobRoles" className="text-sm font-semibold text-[#B0B0B0]">
                       Required Job Roles <span className="text-red-500">*</span>
                     </label>
                     <Input
@@ -353,7 +353,7 @@ export function LeadForm() {
 
                   {/* Message */}
                   <div className="space-y-2">
-                    <label htmlFor="employerMessage" className="text-sm font-semibold text-slate-700">
+                    <label htmlFor="employerMessage" className="text-sm font-semibold text-[#B0B0B0]">
                       Inquiry Details <span className="text-red-500">*</span>
                     </label>
                     <Textarea
@@ -371,11 +371,11 @@ export function LeadForm() {
                     <input
                       id="employerConsent"
                       type="checkbox"
-                      className="mt-0.5 h-5 w-5 rounded border-slate-300 text-[#0B192C] focus:ring-[#0B192C] cursor-pointer"
+                      className="mt-0.5 h-5 w-5 rounded border-[rgba(255,255,255,0.09)] bg-[#101010] text-[#B89B72] focus:ring-[#B89B72] cursor-pointer"
                       {...employerForm.register("consent")}
                     />
-                    <span className="text-sm text-slate-600 leading-snug">
-                      I agree to be contacted by Trendy Fortune regarding this inquiry. <span className="text-red-500">*</span>
+                    <span className="text-sm text-[#A3A3A3] leading-snug">
+                      I agree to be contacted by TricksNTrading regarding this inquiry. <span className="text-red-500">*</span>
                     </span>
                   </label>
                   {employerForm.formState.errors.consent && (
@@ -398,7 +398,7 @@ export function LeadForm() {
                   <Button
                     type="submit"
                     variant="primary"
-                    className="w-full justify-center gap-2 h-12 shadow-lg shadow-slate-900/10 cursor-pointer"
+                    className="w-full justify-center gap-2 h-12 shadow-lg cursor-pointer"
                     isLoading={isSubmittingEmployer}
                   >
                     <Send className="h-4 w-4" />

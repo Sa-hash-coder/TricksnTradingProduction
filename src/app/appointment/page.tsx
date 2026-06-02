@@ -315,7 +315,7 @@ function AppointmentBookingFlow() {
     const cleanApptId = appointmentId.trim().replace(/\s+/g, "");
     const cleanAppId = appId?.trim().replace(/\s+/g, "");
     
-    let text = `Hi Trendy Fortune, I booked an appointment. My Appointment ID is ${cleanApptId}.`;
+    let text = `Hi TricksNTrading, I booked an appointment. My Appointment ID is ${cleanApptId}.`;
     if (cleanAppId) {
       text += ` My Application ID is ${cleanAppId}.`;
     }
@@ -327,7 +327,7 @@ function AppointmentBookingFlow() {
   const renderSlotGroup = (title: string, slots: string[]) => {
     return (
       <div className="space-y-3 pt-2">
-        <h4 className="text-xs font-semibold uppercase tracking-wide text-slate-400 font-sans">{title}</h4>
+        <h4 className="text-xs font-semibold uppercase tracking-wide text-neutral-500 font-sans">{title}</h4>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
           {slots.map((slot) => {
             const disabled = isSlotDisabled(slot);
@@ -340,10 +340,10 @@ function AppointmentBookingFlow() {
                 onClick={() => appointmentForm.setValue("appointmentTime", slot, { shouldValidate: true })}
                 className={`h-11 rounded-xl text-sm font-semibold border flex items-center justify-center transition-all cursor-pointer select-none active:scale-[0.98] ${
                   disabled
-                    ? "bg-slate-50 border-slate-200 text-slate-300 cursor-not-allowed"
+                    ? "bg-white/5 border-white/5 text-neutral-600 cursor-not-allowed"
                     : isSelected
-                    ? "bg-[#0B192C] text-[#B6925B] border-[#B6925B] shadow-md shadow-[#0B192C]/10"
-                    : "bg-white text-slate-700 border-slate-200 hover:border-[#B6925B] hover:text-[#0B192C]"
+                    ? "bg-[#B89B72] text-[#050505] border-[#B89B72] shadow-none"
+                    : "bg-[#111111] text-neutral-300 border-white/8 hover:border-[#B89B72]/40 hover:text-white"
                 }`}
               >
                 {slot}
@@ -360,33 +360,33 @@ function AppointmentBookingFlow() {
     const cleanApptId = submittedAppointmentId.trim().replace(/\s+/g, "");
 
     return (
-      <div className="w-full max-w-lg mx-auto bg-white border border-slate-100 rounded-3xl p-8 shadow-xl shadow-slate-900/5 text-center space-y-6">
+      <div className="w-full max-w-lg mx-auto bg-[#111111] border border-white/8 rounded-3xl p-8 shadow-none text-center space-y-6">
         <div className="flex justify-center">
-          <div className="w-16 h-16 rounded-full bg-emerald-100 flex items-center justify-center">
-            <CheckCircle2 className="h-9 w-9 text-emerald-600" />
+          <div className="w-16 h-16 rounded-full bg-emerald-950/20 border border-emerald-900/30 flex items-center justify-center">
+            <CheckCircle2 className="h-9 w-9 text-emerald-400" />
           </div>
         </div>
         <div className="space-y-2">
-          <h3 className="text-2xl font-display font-extrabold text-[#0B192C]">
+          <h3 className="text-2xl font-display font-extrabold text-[#F4F1EA]">
             {t("successTitle")}
           </h3>
-          <p className="text-sm text-slate-500 leading-relaxed max-w-md mx-auto">
+          <p className="text-sm text-[#B8B2A7] leading-relaxed max-w-md mx-auto">
             Save your Appointment ID. You can present it during office visits or online call syncs.
           </p>
         </div>
         <div className="grid grid-cols-1 gap-4 font-sans text-left">
-          <div className="bg-slate-50 border border-slate-200 rounded-2xl p-4 space-y-1">
-            <p className="text-[10px] text-slate-400 font-semibold uppercase tracking-wide">Appointment ID</p>
+          <div className="bg-[#050505] border border-white/8 rounded-2xl p-4 space-y-1">
+            <p className="text-[10px] text-[#7C756A] font-semibold uppercase tracking-wide">Appointment ID</p>
             <div className="flex items-center justify-between gap-4">
-              <p className="text-base font-mono font-bold text-[#0B192C] select-all break-all" translate="no">
+              <p className="text-base font-mono font-bold text-[#F4F1EA] select-all break-all" translate="no">
                 {cleanApptId}
               </p>
               <button
                 type="button"
                 onClick={() => handleCopyAppointmentId(cleanApptId)}
-                className="text-slate-400 hover:text-[#B6925B] transition-colors shrink-0"
+                className="text-[#7C756A] hover:text-[#B89B72] transition-colors shrink-0"
               >
-                {copiedId ? <Check className="h-4.5 w-4.5 text-emerald-600" /> : <Copy className="h-4.5 w-4.5" />}
+                {copiedId ? <Check className="h-4.5 w-4.5 text-emerald-400" /> : <Copy className="h-4.5 w-4.5" />}
               </button>
             </div>
           </div>
@@ -395,12 +395,12 @@ function AppointmentBookingFlow() {
           <button
             type="button"
             onClick={() => handleCopyAppointmentId(cleanApptId)}
-            className="w-full flex items-center justify-center gap-2 h-12 bg-slate-100 hover:bg-slate-200 text-[#0B192C] rounded-xl font-bold text-sm transition-all active:scale-[0.98] cursor-pointer"
+            className="w-full flex items-center justify-center gap-2 h-12 bg-[#111111] hover:bg-[#141414] text-[#F4F1EA] border border-white/8 rounded-xl font-bold text-sm transition-all active:scale-[0.98] cursor-pointer"
           >
             {copiedId ? (
               <>
-                <Check className="h-4 w-4 text-emerald-600" />
-                <span className="text-emerald-600">Copied!</span>
+                <Check className="h-4 w-4 text-emerald-400" />
+                <span className="text-emerald-400">Copied!</span>
               </>
             ) : (
               <>
@@ -420,7 +420,7 @@ function AppointmentBookingFlow() {
           </a>
           <a
             href="/"
-            className="w-full flex items-center justify-center gap-2 h-12 bg-[#0B192C] text-[#B6925B] border border-[#B6925B]/40 hover:bg-[#B6925B] hover:text-[#0B192C] rounded-xl font-bold text-sm transition-all duration-300"
+            className="w-full flex items-center justify-center gap-2 h-12 bg-transparent text-[#F4F1EA] border border-white/10 hover:bg-white/5 hover:border-white/20 rounded-xl font-bold text-sm transition-all duration-300"
           >
             <span>{t("backHome")}</span>
           </a>
@@ -428,7 +428,7 @@ function AppointmentBookingFlow() {
         <button
           type="button"
           onClick={handleReset}
-          className="text-sm text-[#B6925B] hover:text-[#A37F48] font-semibold cursor-pointer transition-colors pt-2"
+          className="text-sm text-[#B89B72] hover:text-[#C8AD85] font-semibold cursor-pointer transition-colors pt-2"
         >
           ← Book Another Appointment
         </button>
@@ -437,36 +437,36 @@ function AppointmentBookingFlow() {
   }
 
   return (
-    <div className="w-full max-w-4xl mx-auto bg-white border border-slate-100 rounded-3xl p-6 sm:p-10 shadow-xl shadow-slate-900/5 space-y-8">
+    <div className="w-full max-w-4xl mx-auto bg-[#111111] border border-white/8 rounded-3xl p-6 sm:p-10 shadow-none space-y-8">
       <div className="text-center space-y-3">
         <div className="flex justify-center">
-          <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#0B192C] to-[#1E3E62] flex items-center justify-center shadow-lg">
-            <Calendar className="h-6 w-6 text-[#B6925B]" />
+          <div className="w-14 h-14 rounded-2xl bg-[#050505] border border-white/8 flex items-center justify-center shadow-lg">
+            <Calendar className="h-6 w-6 text-[#B89B72]" />
           </div>
         </div>
-        <h1 className="text-3xl font-display font-extrabold text-[#0B192C]">
+        <h1 className="text-3xl font-display font-extrabold text-[#F4F1EA]">
           {t("title")}
         </h1>
-        <p className="text-sm text-slate-500 max-w-md mx-auto leading-relaxed">
+        <p className="text-sm text-[#B8B2A7] max-w-md mx-auto leading-relaxed">
           {t("subtitle")}
         </p>
       </div>
       <form onSubmit={appointmentForm.handleSubmit(onSubmit)} className="space-y-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 font-sans">
           <div className="space-y-2 md:col-span-2">
-            <label htmlFor="appt-visitor-type" className="text-sm font-semibold text-slate-700">
+            <label htmlFor="appt-visitor-type" className="text-sm font-semibold text-[#B8B2A7]">
               {t("visitorType")} <span className="text-red-500">*</span>
             </label>
             <div className="relative">
               <select
                 id="appt-visitor-type"
-                className="flex h-11 w-full rounded-xl border border-slate-200 bg-white px-4 py-2 text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0B192C] focus-visible:ring-offset-2 appearance-none cursor-pointer"
+                className="flex h-11 w-full rounded-xl border border-white/10 bg-[#050505] text-[#F4F1EA] px-4 py-2 text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B89B72] focus-visible:ring-offset-2 appearance-none cursor-pointer"
                 {...appointmentForm.register("visitorType")}
               >
-                <option value="Candidate">{t("candidateOption")}</option>
-                <option value="B2B Partner">{t("partnerOption")}</option>
+                <option value="Candidate" className="bg-[#111111] text-[#F4F1EA]">{t("candidateOption")}</option>
+                <option value="B2B Partner" className="bg-[#111111] text-[#F4F1EA]">{t("partnerOption")}</option>
               </select>
-              <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
+              <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-[#7C756A]">
                 ▼
               </div>
             </div>
@@ -474,8 +474,8 @@ function AppointmentBookingFlow() {
           {visitorType === "Candidate" && (
             <>
               <div className="space-y-2">
-                <label htmlFor="appt-application-id" className="text-sm font-semibold text-slate-700">
-                  {t("appId")} <span className="text-slate-400 font-normal">(Optional)</span>
+                <label htmlFor="appt-application-id" className="text-sm font-semibold text-[#B8B2A7]">
+                  {t("appId")} <span className="text-[#7C756A] font-normal">(Optional)</span>
                 </label>
                 <Input
                   id="appt-application-id"
@@ -488,7 +488,7 @@ function AppointmentBookingFlow() {
                 )}
               </div>
               <div className="space-y-2">
-                <label htmlFor="appt-full-name" className="text-sm font-semibold text-slate-700">
+                <label htmlFor="appt-full-name" className="text-sm font-semibold text-[#B8B2A7]">
                   {t("fullName")} <span className="text-red-500">*</span>
                 </label>
                 <Input
@@ -506,7 +506,7 @@ function AppointmentBookingFlow() {
           {visitorType === "B2B Partner" && (
             <>
               <div className="space-y-2">
-                <label htmlFor="appt-company-name" className="text-sm font-semibold text-slate-700">
+                <label htmlFor="appt-company-name" className="text-sm font-semibold text-[#B8B2A7]">
                   {t("companyName")} <span className="text-red-500">*</span>
                 </label>
                 <Input
@@ -520,7 +520,7 @@ function AppointmentBookingFlow() {
                 )}
               </div>
               <div className="space-y-2">
-                <label htmlFor="appt-contact-person" className="text-sm font-semibold text-slate-700">
+                <label htmlFor="appt-contact-person" className="text-sm font-semibold text-[#B8B2A7]">
                   {t("contactPerson")} <span className="text-red-500">*</span>
                 </label>
                 <Input
@@ -536,7 +536,7 @@ function AppointmentBookingFlow() {
             </>
           )}
           <div className="space-y-2">
-            <label htmlFor="appt-phone" className="text-sm font-semibold text-slate-700">
+            <label htmlFor="appt-phone" className="text-sm font-semibold text-[#B8B2A7]">
               {t("phone")} <span className="text-red-500">*</span>
             </label>
             <Input
@@ -551,7 +551,7 @@ function AppointmentBookingFlow() {
             )}
           </div>
           <div className="space-y-2">
-            <label htmlFor="appt-email" className="text-sm font-semibold text-slate-700">
+            <label htmlFor="appt-email" className="text-sm font-semibold text-[#B8B2A7]">
               {t("email")} <span className="text-red-500">*</span>
             </label>
             <Input
@@ -566,41 +566,41 @@ function AppointmentBookingFlow() {
             )}
           </div>
           <div className="space-y-2 md:col-span-2">
-            <label htmlFor="appt-type" className="text-sm font-semibold text-slate-700">
+            <label htmlFor="appt-type" className="text-sm font-semibold text-[#B8B2A7]">
               {t("appType")} <span className="text-red-500">*</span>
             </label>
             <div className="relative">
               <select
                 id="appt-type"
-                className={`flex h-11 w-full rounded-xl border border-slate-200 bg-white px-4 py-2 text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0B192C] focus-visible:ring-offset-2 appearance-none cursor-pointer ${
+                className={`flex h-11 w-full rounded-xl border border-white/10 bg-[#050505] text-[#F4F1EA] px-4 py-2 text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B89B72] focus-visible:ring-offset-2 appearance-none cursor-pointer ${
                   appointmentForm.formState.errors.appointmentType ? "border-red-500" : ""
                 }`}
                 {...appointmentForm.register("appointmentType")}
               >
-                <option value="Online Appointment">{t("onlineApp")}</option>
-                <option value="Office Visit">{t("officeVisit")}</option>
+                <option value="Online Appointment" className="bg-[#111111] text-[#F4F1EA]">{t("onlineApp")}</option>
+                <option value="Office Visit" className="bg-[#111111] text-[#F4F1EA]">{t("officeVisit")}</option>
               </select>
-              <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
+              <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-[#7C756A]">
                 ▼
               </div>
             </div>
           </div>
           <div className="md:col-span-2">
             {selectedType === "Office Visit" ? (
-              <div className="flex items-start gap-3 bg-slate-50 border border-slate-200 rounded-2xl p-4 text-[#0B192C]">
-                <MapPin className="h-5 w-5 text-[#B6925B] shrink-0 mt-0.5" />
+              <div className="flex items-start gap-3 bg-[#050505] border border-white/8 rounded-2xl p-4 text-[#F4F1EA]">
+                <MapPin className="h-5 w-5 text-[#B89B72] shrink-0 mt-0.5" />
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-wide text-slate-400">Office Location</p>
+                  <p className="text-xs font-semibold uppercase tracking-wide text-[#7C756A]">Office Location</p>
                   <p className="text-sm font-semibold mt-1">
                     Office No-C616-C617, NoidaOne Tower C, Sector 62, Noida, U.P. - 201309
                   </p>
                 </div>
               </div>
             ) : (
-              <div className="flex items-start gap-3 bg-slate-50 border border-slate-200 rounded-2xl p-4 text-[#0B192C]">
-                <Clock className="h-5 w-5 text-[#B6925B] shrink-0 mt-0.5" />
+              <div className="flex items-start gap-3 bg-[#050505] border border-white/8 rounded-2xl p-4 text-[#F4F1EA]">
+                <Clock className="h-5 w-5 text-[#B89B72] shrink-0 mt-0.5" />
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-wide text-slate-400">Online Sync Details</p>
+                  <p className="text-xs font-semibold uppercase tracking-wide text-[#7C756A]">Online Sync Details</p>
                   <p className="text-sm font-semibold mt-1">
                     Our team will contact you online through call or meeting link if available.
                   </p>
@@ -611,7 +611,7 @@ function AppointmentBookingFlow() {
 
           {/* Date Input with min range */}
           <div className="space-y-2 md:col-span-2">
-            <label htmlFor="appt-date" className="text-sm font-semibold text-slate-700">
+            <label htmlFor="appt-date" className="text-sm font-semibold text-[#B8B2A7]">
               {t("prefDate")} <span className="text-red-500">*</span>
             </label>
             <Input
@@ -628,7 +628,7 @@ function AppointmentBookingFlow() {
 
           {/* Time Slots Area (Morning / Afternoon / Evening) */}
           <div className="space-y-4 md:col-span-2">
-            <label className="text-sm font-semibold text-slate-700 flex items-center gap-1.5">
+            <label className="text-sm font-semibold text-[#B8B2A7] flex items-center gap-1.5">
               {t("prefTime")} <span className="text-red-500">*</span>
             </label>
             
@@ -637,11 +637,11 @@ function AppointmentBookingFlow() {
             )}
 
             {!appointmentDate ? (
-              <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6 text-center text-sm text-slate-500 font-medium">
+              <div className="bg-[#050505] border border-white/8 rounded-2xl p-6 text-center text-sm text-[#B8B2A7] font-medium">
                 Please select a preferred date first to see available slots.
               </div>
             ) : (
-              <div className="space-y-6 bg-slate-50/50 border border-slate-100 rounded-3xl p-4 sm:p-6">
+              <div className="space-y-6 bg-[#050505] border border-white/8 rounded-3xl p-4 sm:p-6">
                 {renderSlotGroup("Morning", MORNING_SLOTS)}
                 {renderSlotGroup("Afternoon", AFTERNOON_SLOTS)}
                 {renderSlotGroup("Evening", EVENING_SLOTS)}
@@ -650,10 +650,10 @@ function AppointmentBookingFlow() {
           </div>
 
           <div className="space-y-2 md:col-span-2">
-            <label htmlFor="appt-notes" className="text-sm font-semibold text-slate-700">
+            <label htmlFor="appt-notes" className="text-sm font-semibold text-[#B8B2A7]">
               {visitorType === "Candidate" ? (
                 <>
-                  {t("notes")} <span className="text-slate-400 font-normal">(Optional)</span>
+                  {t("notes")} <span className="text-[#7C756A] font-normal">(Optional)</span>
                 </>
               ) : (
                 <>
@@ -690,17 +690,18 @@ function AppointmentBookingFlow() {
           </div>
           <Button
             type="submit"
-            className="w-full justify-center gap-2 h-12 bg-[#0B192C] text-[#B6925B] border border-[#B6925B] hover:bg-[#B6925B] hover:text-[#0B192C] font-extrabold text-sm transition-all duration-300 shadow-md hover:shadow-lg active:scale-98 cursor-pointer rounded-xl"
+            variant="primary"
+            className="w-full justify-center gap-2 h-12 font-extrabold text-sm transition-all duration-300 shadow-none rounded-xl"
             isLoading={isSubmitting}
           >
             <Send className="h-4 w-4 shrink-0" />
             <span>{isSubmitting ? t("bookingText") : t("bookBtn")}</span>
           </Button>
           <a
-            href="https://wa.me/918700917348?text=Hi%20Trendy%20Fortune%2C%20I%20want%20to%20book%20an%20appointment."
+            href="https://wa.me/918700917348?text=Hi%20TricksNTrading%2C%20I%20want%20to%20book%20an%20appointment."
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full flex items-center justify-center gap-2 h-12 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-bold text-sm transition-all active:scale-[0.98] cursor-pointer font-sans"
+            className="w-full flex items-center justify-center gap-2 h-12 bg-[#10B981] hover:bg-[#059669] text-white rounded-xl font-bold text-sm transition-all active:scale-[0.98] cursor-pointer font-sans"
           >
             <MessageCircle className="h-5 w-5 fill-white" />
             {t("whatsappBtn")}
@@ -716,23 +717,23 @@ export default function AppointmentPage() {
     <>
       <Navbar />
 
-      <main className="flex-1 w-full bg-[#f8fafc] pt-32 pb-20 px-4">
+      <main className="flex-1 w-full bg-[#050505] text-[#F4F1EA] pt-32 pb-20 px-4">
         <div className="max-w-7xl mx-auto space-y-6">
           <div className="max-w-4xl mx-auto">
             <a
               href="/"
-              className="inline-flex items-center gap-1.5 text-sm font-semibold text-slate-500 hover:text-[#0B192C] transition-colors cursor-pointer group focus:outline-none"
+              className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#B8B2A7] hover:text-white transition-colors cursor-pointer group focus:outline-none"
             >
-              <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1 text-[#B6925B]" />
+              <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1 text-[#B89B72]" />
               <span>Back to Home</span>
             </a>
           </div>
 
           <React.Suspense
             fallback={
-              <div className="w-full max-w-2xl mx-auto bg-white rounded-3xl border border-slate-100 shadow-xl p-10 flex flex-col items-center gap-4">
-                <span className="w-10 h-10 rounded-full border-4 border-[#B6925B] border-t-transparent animate-spin" />
-                <p className="text-sm text-slate-500 font-semibold font-sans">
+              <div className="w-full max-w-2xl mx-auto bg-[#111111] rounded-3xl border border-white/8 shadow-none p-10 flex flex-col items-center gap-4">
+                <span className="w-10 h-10 rounded-full border-4 border-[#B89B72] border-t-transparent animate-spin" />
+                <p className="text-sm text-[#B8B2A7] font-semibold font-sans">
                   Loading appointment form...
                 </p>
               </div>

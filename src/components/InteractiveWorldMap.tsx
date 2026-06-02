@@ -154,15 +154,15 @@ export function InteractiveWorldMap() {
     <div className="relative w-full h-full min-h-[160px] xs:min-h-[220px] sm:min-h-[350px] md:min-h-[450px] lg:min-h-[660px] xl:min-h-[720px] flex items-center justify-center transition-all duration-500 overflow-visible mt-8 sm:mt-0" style={{ aspectRatio: "2 / 1" }}>
 
       {/* ═══════════ AMBIENT BACKGROUND GLOW LAYERS ═══════════ */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[45%] w-[110%] h-[110%] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(182,146,91,0.12)_0%,transparent_70%)] pointer-events-none z-0" />
-      <div className="absolute top-[10%] right-[-10%] w-[70%] h-[70%] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(30,62,98,0.10)_0%,transparent_70%)] pointer-events-none z-0" />
-      <div className="absolute top-[38%] left-[55%] w-[25%] h-[25%] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(16,185,129,0.14)_0%,transparent_70%)] pointer-events-none blur-xl animate-pulse z-0" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[45%] w-[110%] h-[110%] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(184,155,114,0.08)_0%,transparent_70%)] pointer-events-none z-0" />
+      <div className="absolute top-[10%] right-[-10%] w-[70%] h-[70%] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.02)_0%,transparent_70%)] pointer-events-none z-0" />
+      <div className="absolute top-[38%] left-[55%] w-[25%] h-[25%] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(184,155,114,0.08)_0%,transparent_70%)] pointer-events-none blur-xl animate-pulse z-0" />
 
       {/* ═══════════ USER INSTRUCTION BADGE ═══════════ */}
       <div className="absolute top-[-2.5rem] sm:top-4 md:top-6 left-1/2 -translate-x-1/2 z-30 pointer-events-none w-max max-w-[90%] text-center">
-        <div className="flex items-center justify-center gap-1.5 sm:gap-2 bg-[#0B192C]/90 backdrop-blur-sm border border-[#B6925B]/40 px-2.5 py-1.5 sm:px-4 sm:py-2 rounded-full shadow-lg">
-          <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#B6925B] animate-pulse shrink-0" />
-          <span className="text-[9px] sm:text-xs md:text-sm font-sans font-bold tracking-wider text-white uppercase select-none">
+        <div className="flex items-center justify-center gap-1.5 sm:gap-2 bg-[#101010]/90 backdrop-blur-sm border border-[rgba(255,255,255,0.07)] px-2.5 py-1.5 sm:px-4 sm:py-2 rounded-full shadow-lg">
+          <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#B89B72] animate-pulse shrink-0" />
+          <span className="text-[9px] sm:text-xs md:text-sm font-sans font-bold tracking-wider text-[#F5F1E8] uppercase select-none">
             {t("mapInstruction") || "Tap any country dot to view available jobs"}
           </span>
         </div>
@@ -178,21 +178,21 @@ export function InteractiveWorldMap() {
       >
         <defs>
           <linearGradient id="heroRouteGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#10B981" stopOpacity="0.02" />
-            <stop offset="35%" stopColor="#B6925B" stopOpacity="0.25" />
-            <stop offset="65%" stopColor="#B6925B" stopOpacity="0.25" />
-            <stop offset="100%" stopColor="#10B981" stopOpacity="0.05" />
+            <stop offset="0%" stopColor="#B89B72" stopOpacity="0.02" />
+            <stop offset="35%" stopColor="#B89B72" stopOpacity="0.25" />
+            <stop offset="65%" stopColor="#B89B72" stopOpacity="0.25" />
+            <stop offset="100%" stopColor="#B89B72" stopOpacity="0.05" />
           </linearGradient>
 
           <radialGradient id="indiaGlow" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="#10B981" stopOpacity="0.55" />
-            <stop offset="100%" stopColor="#10B981" stopOpacity="0" />
+            <stop offset="0%" stopColor="#B89B72" stopOpacity="0.55" />
+            <stop offset="100%" stopColor="#B89B72" stopOpacity="0" />
           </radialGradient>
         </defs>
 
         {/* Dotted World Map Background */}
         <g 
-          className="text-slate-900/22 transition-opacity duration-500 hover:text-slate-900/28"
+          className="text-white/20 transition-opacity duration-500 hover:text-white/30"
           opacity="0.9"
           style={{ maskImage: "linear-gradient(to bottom, transparent, white 8%, white 92%, transparent)" }}
         >
@@ -225,9 +225,9 @@ export function InteractiveWorldMap() {
           return (
             <g key="origin-india">
               <circle cx={pt.x} cy={pt.y} r="22" fill="url(#indiaGlow)" />
-              <circle cx={pt.x} cy={pt.y} r="5.5" fill="#0B192C" />
-              <circle cx={pt.x} cy={pt.y} r="2.2" fill="#10B981" />
-              <circle cx={pt.x} cy={pt.y} r="2.2" fill="#10B981" opacity="0.6">
+              <circle cx={pt.x} cy={pt.y} r="5.5" fill="#050505" />
+              <circle cx={pt.x} cy={pt.y} r="2.2" fill="#B89B72" />
+              <circle cx={pt.x} cy={pt.y} r="2.2" fill="#B89B72" opacity="0.6">
                 <animate attributeName="r" from="2.2" to="11" dur="2.5s" begin="0s" repeatCount="indefinite" />
                 <animate attributeName="opacity" from="0.6" to="0" dur="2.5s" begin="0s" repeatCount="indefinite" />
               </circle>
@@ -256,34 +256,33 @@ export function InteractiveWorldMap() {
                 aria-label={`View jobs in ${country.country_name}`}
               >
                 {/* Focus ring for keyboard accessibility */}
-                <span className="absolute inset-0 rounded-full ring-0 group-focus-visible:ring-2 group-focus-visible:ring-[#B6925B] group-focus-visible:ring-offset-2 transition-all pointer-events-none" />
+                <span className="absolute inset-0 rounded-full ring-0 group-focus-visible:ring-2 group-focus-visible:ring-[#B89B72] group-focus-visible:ring-offset-2 transition-all pointer-events-none" />
 
-                {/* Pulsing gold glow ring animation on hover and focus */}
+                {/* Pulsing amber glow ring animation on hover and focus */}
                 <span
                   className={cn(
-                    "absolute w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-[#B6925B]/40 opacity-0 group-hover:opacity-100 group-hover:animate-ping group-focus-visible:opacity-100 group-focus-visible:animate-ping pointer-events-none transition-all duration-300",
+                    "absolute w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-[#B89B72]/40 opacity-0 group-hover:opacity-100 group-hover:animate-ping group-focus-visible:opacity-100 group-focus-visible:animate-ping pointer-events-none transition-all duration-300",
                     isSelected ? "opacity-100 animate-ping" : ""
                   )}
                   style={{ animationDuration: "1.2s" }}
                 />
 
-                {/* Marker body: navy shell with glowing gold/emerald core */}
+                {/* Marker body: dark shell with glowing amber core */}
                 <span className={cn(
-                  "relative flex items-center justify-center w-3.5 h-3.5 sm:w-5 sm:h-5 rounded-full bg-[#0B192C] border transition-all duration-250",
+                  "relative flex items-center justify-center w-3.5 h-3.5 sm:w-5 sm:h-5 rounded-full bg-[#050505] border transition-all duration-250",
                   isSelected
-                    ? "border-[#10B981] scale-[1.3] shadow-[0_0_20px_rgba(16,185,129,0.9)]"
-                    : "border-[#B6925B]/40 shadow-[0_0_12px_rgba(182,146,91,0.6)] group-hover:shadow-[0_0_20px_rgba(16,185,129,0.9)] group-hover:scale-[1.3] group-hover:border-[#10B981] group-focus-visible:scale-[1.3] group-focus-visible:border-[#10B981]"
+                    ? "border-[#B89B72] scale-[1.3] shadow-[0_0_20px_rgba(184,155,114,0.9)]"
+                    : "border-[#B89B72]/40 shadow-[0_0_12px_rgba(184,155,114,0.6)] group-hover:shadow-[0_0_20px_rgba(184,155,114,0.9)] group-hover:scale-[1.3] group-hover:border-[#B89B72] group-focus-visible:scale-[1.3] group-focus-visible:border-[#B89B72]"
                 )}>
                   <span className={cn(
                     "w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full transition-colors duration-200",
-                    isSelected ? "bg-[#10B981]" : "bg-[#B6925B] group-hover:bg-[#10B981]"
+                    isSelected ? "bg-[#B89B72]" : "bg-[#B89B72]/60 group-hover:bg-[#B89B72]"
                   )} />
                 </span>
 
-                {/* ── Premium Frosted Glass Tooltip Card (country name, flag and gold clickable button) ── */}
-                {/* Pointer events are set to none by default to completely prevent distant hover triggering. It is set to auto only when hovered or focused. */}
+                {/* ── Premium Tooltip Card (country name, flag and gold clickable button) ── */}
                 <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-3.5 w-max min-w-[150px] sm:min-w-[170px] opacity-0 scale-95 origin-bottom translate-y-1.5 group-hover:opacity-100 group-hover:translate-y-0 group-hover:scale-100 group-focus-within:opacity-100 group-focus-within:translate-y-0 group-focus-within:scale-100 transition-all duration-200 z-[999] pointer-events-none group-hover:pointer-events-auto group-focus-within:pointer-events-auto hidden lg:block">
-                  <div className="bg-[#0B192C] text-white py-3 px-4 rounded-2xl shadow-[0_10px_30px_rgba(11,25,44,0.45)] border border-[#B6925B]/40 flex flex-col items-center gap-2">
+                  <div className="bg-[#101010] text-[#F5F1E8] py-3 px-4 rounded-2xl shadow-xl border border-[rgba(255,255,255,0.07)] flex flex-col items-center gap-2">
                     {/* Flag and Name Row */}
                     <div className="flex items-center gap-2">
                       <span className="text-xl sm:text-2xl select-none leading-none" role="img" aria-label={`${country.country_name} Flag`}>
@@ -295,13 +294,13 @@ export function InteractiveWorldMap() {
                     </div>
 
                     {/* Highly clickable View Jobs button */}
-                    <span className="w-full h-8 px-3 rounded-lg bg-[#B6925B] hover:bg-[#B6925B]/90 active:scale-[0.98] text-[#0B192C] font-bold text-[11px] sm:text-[12px] flex items-center justify-center gap-1 transition-all duration-200 select-none cursor-pointer">
+                    <span className="w-full h-8 px-3 rounded-lg bg-[#B89B72] hover:bg-[#C8AD85] active:scale-[0.98] text-[#050505] font-bold text-[11px] sm:text-[12px] flex items-center justify-center gap-1 transition-all duration-200 select-none cursor-pointer">
                       <span>{viewJobsText}</span>
                       <span className="text-[12px] font-sans">→</span>
                     </span>
                   </div>
                   {/* Tooltip arrow */}
-                  <div className="w-2.5 h-2.5 bg-[#0B192C] border-r border-b border-[#B6925B]/40 rotate-45 mx-auto -mt-[5px]" />
+                  <div className="w-2.5 h-2.5 bg-[#101010] border-r border-b border-[rgba(255,255,255,0.07)] rotate-45 mx-auto -mt-[5px]" />
                 </div>
               </a>
             </div>
@@ -311,10 +310,10 @@ export function InteractiveWorldMap() {
 
       {/* ═══════════ MOBILE / TABLET COUNTRY PREVIEW CARD ═══════════ */}
       {selectedCountry && (
-        <div className="absolute bottom-[-1.5rem] left-1/2 -translate-x-1/2 w-[90%] xs:w-[280px] sm:w-[320px] bg-[#0B192C] text-white py-3.5 px-4 rounded-2xl shadow-[0_12px_36px_rgba(11,25,44,0.6)] border border-[#B6925B] flex flex-col gap-2.5 z-40 lg:hidden animate-in fade-in slide-in-from-bottom-2 duration-200 pointer-events-auto">
+        <div className="absolute bottom-[-1.5rem] left-1/2 -translate-x-1/2 w-[90%] xs:w-[280px] sm:w-[320px] bg-[#101010] text-[#F5F1E8] py-3.5 px-4 rounded-2xl shadow-none border border-[rgba(255,255,255,0.07)] flex flex-col gap-2.5 z-40 lg:hidden animate-in fade-in slide-in-from-bottom-2 duration-200 pointer-events-auto">
           <button 
             onClick={() => setSelectedCountrySlug(null)}
-            className="absolute top-2.5 right-2.5 p-1 rounded-full text-white/75 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
+            className="absolute top-2.5 right-2.5 p-1 rounded-full text-[#B8B2A7] hover:text-[#F5F1E8] hover:bg-white/5 transition-colors cursor-pointer"
             aria-label="Close preview"
           >
             <CloseIcon className="h-4 w-4" />
@@ -325,10 +324,10 @@ export function InteractiveWorldMap() {
               {getFlagEmoji(selectedCountry.country_code)}
             </span>
             <div className="flex flex-col">
-              <span className="font-display font-extrabold text-[15px] sm:text-[16px] tracking-tight leading-none text-[#B6925B]">
+              <span className="font-display font-extrabold text-[15px] sm:text-[16px] tracking-tight leading-none text-[#B89B72]">
                 {selectedCountry.country_name}
               </span>
-              <span className="text-[10px] sm:text-xs text-white/60 mt-1 uppercase tracking-wider font-semibold">
+              <span className="text-[10px] sm:text-xs text-[#B8B2A7] mt-1 uppercase tracking-wider font-semibold">
                 Available Jobs
               </span>
             </div>
@@ -336,7 +335,7 @@ export function InteractiveWorldMap() {
 
           <a
             href={`/jobs/${selectedCountry.country_slug}`}
-            className="w-full h-10 px-4 rounded-xl bg-[#B6925B] hover:bg-[#A37F48] active:scale-[0.98] text-[#0B192C] font-bold text-xs sm:text-sm flex items-center justify-center gap-1.5 shadow-lg shadow-[#B6925B]/20 transition-all duration-200"
+            className="w-full h-10 px-4 rounded-xl bg-[#B89B72] hover:bg-[#C8AD85] active:scale-[0.98] text-[#050505] font-bold text-xs sm:text-sm flex items-center justify-center gap-1.5 shadow-lg shadow-[#B89B72]/20 transition-all duration-200"
           >
             <span>{viewJobsText}</span>
             <span className="text-sm font-sans">→</span>

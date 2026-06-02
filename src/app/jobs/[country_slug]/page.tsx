@@ -179,32 +179,32 @@ export default function CountryJobsPage() {
 
   // Custom WhatsApp link pre-filled with dynamic job role inquiry
   const getJobWhatsAppUrl = (role: string) => {
-    const text = `Hi Trendy Fortune, I want to apply for the ${role} job in ${displayCountryName}. Requisition ID is active. Please guide me on work permit requirements.`;
+    const text = `Hi TricksNTrading, I want to apply for the ${role} job in ${displayCountryName}. Requisition ID is active. Please guide me on work permit requirements.`;
     return `https://wa.me/${CONTACT_INFO.phoneRaw}?text=${encodeURIComponent(text)}`;
   };
 
   // General country-level WhatsApp inquiry
   const generalWhatsAppUrl = `https://wa.me/${CONTACT_INFO.phoneRaw}?text=${encodeURIComponent(
-    `Hi Trendy Fortune, I want to know about active job openings and immigration options in ${displayCountryName}.`
+    `Hi TricksNTrading, I want to know about active job openings and immigration options in ${displayCountryName}.`
   )}`;
 
   return (
     <>
       <Navbar />
 
-      <main className="flex-1 w-full bg-[#f8fafc]">
+      <main className="flex-1 w-full bg-[#050505]">
         {/* Header Hero Section */}
-        <section className="relative pt-28 pb-16 bg-[#0B192C] text-white overflow-hidden">
+        <section className="relative pt-28 pb-16 bg-[#0B0B0B] border-b border-white/8 text-[#F4F1EA] overflow-hidden">
           {/* Subtle glow background */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-0 w-[600px] h-[300px] bg-gradient-to-r from-[#B6925B]/10 to-transparent rounded-full blur-[100px] pointer-events-none" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-0 w-[600px] h-[300px] bg-gradient-to-r from-[#B89B72]/5 to-transparent rounded-full blur-[100px] pointer-events-none" />
           
           <div className="max-w-5xl mx-auto px-4 relative z-10 space-y-6">
             {/* Back Button */}
             <a 
               href="/#jobs-abroad"
-              className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-slate-400 hover:text-[#B6925B] transition-colors cursor-pointer group focus:outline-none"
+              className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#B8B2A7] hover:text-white transition-colors cursor-pointer group focus:outline-none"
             >
-              <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
+              <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1 text-[#B89B72]" />
               <span>Back to Locations</span>
             </a>
 
@@ -216,11 +216,11 @@ export default function CountryJobsPage() {
                 </span>
               )}
               <h1 className="text-3.5xl md:text-5xl font-display font-extrabold tracking-tight">
-                {tJobs("titlePrefix")} <span className="text-[#B6925B]">{displayCountryName}</span>
+                {tJobs("titlePrefix")} <span className="text-[#B89B72]">{displayCountryName}</span>
               </h1>
             </div>
 
-            <p className="text-slate-400 max-w-2xl text-sm md:text-base leading-relaxed">
+            <p className="text-[#B8B2A7] max-w-2xl text-sm md:text-base leading-relaxed">
               {tJobs("subtitle", { country: displayCountryName })}
             </p>
           </div>
@@ -234,59 +234,59 @@ export default function CountryJobsPage() {
               /* --- skeleton loading states --- */
               <div className="space-y-6">
                 {[1, 2, 3].map((i) => (
-                  <div key={i} className="w-full bg-white rounded-3xl p-6 md:p-8 border border-slate-100 shadow-sm space-y-6 animate-pulse">
+                  <div key={i} className="w-full bg-[#111111] rounded-3xl p-6 md:p-8 border border-white/8 shadow-none space-y-6 animate-pulse">
                     <div className="flex justify-between items-start gap-4">
                       <div className="space-y-3 flex-1">
-                        <div className="h-6 bg-slate-100 rounded-md w-3/4" />
-                        <div className="h-4 bg-slate-100 rounded-md w-1/2" />
+                        <div className="h-6 bg-white/5 rounded-md w-3/4" />
+                        <div className="h-4 bg-white/5 rounded-md w-1/2" />
                       </div>
-                      <div className="h-6 bg-slate-100 rounded-full w-20" />
+                      <div className="h-6 bg-white/5 rounded-full w-20" />
                     </div>
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                       {Array.from({ length: 4 }).map((_, idx) => (
-                        <div key={idx} className="h-8 bg-slate-50 rounded-xl" />
+                        <div key={idx} className="h-8 bg-white/5 rounded-xl" />
                       ))}
                     </div>
-                    <div className="h-16 bg-slate-50 rounded-2xl" />
+                    <div className="h-16 bg-white/5 rounded-2xl" />
                     <div className="flex gap-4 pt-2">
-                      <div className="h-11 bg-slate-100 rounded-xl flex-1" />
-                      <div className="h-11 bg-slate-100 rounded-xl flex-1" />
+                      <div className="h-11 bg-white/5 rounded-xl flex-1" />
+                      <div className="h-11 bg-white/5 rounded-xl flex-1" />
                     </div>
                   </div>
                 ))}
               </div>
             ) : error ? (
               /* --- Error block --- */
-              <div className="text-center py-16 bg-white border border-slate-100 rounded-3xl shadow-sm px-6 max-w-xl mx-auto">
+              <div className="text-center py-16 bg-[#111111] border border-white/8 rounded-3xl px-6 max-w-xl mx-auto">
                 <AlertCircle className="h-12 w-12 text-red-500 mx-auto mb-4" />
-                <h3 className="text-lg font-bold text-[#0B192C] mb-2">Error Loading Jobs</h3>
-                <p className="text-slate-500 text-sm mb-6">{error}</p>
+                <h3 className="text-lg font-bold text-[#F4F1EA] mb-2">Error Loading Jobs</h3>
+                <p className="text-[#B8B2A7] text-sm mb-6">{error}</p>
                 <button 
                   onClick={() => window.location.reload()}
-                  className="px-6 py-2.5 bg-[#0B192C] text-white font-semibold rounded-xl hover:bg-[#B6925B] transition-all cursor-pointer"
+                  className="px-6 py-2.5 bg-[#B89B72] text-[#050505] font-semibold rounded-xl hover:bg-[#C8AD85] transition-all cursor-pointer border-none"
                 >
                   Try Again
                 </button>
               </div>
             ) : jobs.length === 0 ? (
               /* --- Empty State block --- */
-              <div className="text-center py-16 bg-white border border-slate-100 rounded-3xl shadow-xl shadow-slate-900/5 px-6 max-w-xl mx-auto flex flex-col items-center">
-                <div className="w-16 h-16 rounded-full bg-[#B6925B]/10 flex items-center justify-center mb-6">
-                  <Briefcase className="h-8 w-8 text-[#B6925B]" />
+              <div className="text-center py-16 bg-[#111111] border border-white/8 rounded-3xl shadow-none px-6 max-w-xl mx-auto flex flex-col items-center">
+                <div className="w-16 h-16 rounded-full bg-[#B89B72]/10 flex items-center justify-center mb-6">
+                  <Briefcase className="h-8 w-8 text-[#B89B72]" />
                 </div>
-                <h3 className="text-xl font-display font-extrabold text-[#0B192C] mb-3 text-center">
+                <h3 className="text-xl font-display font-extrabold text-[#F4F1EA] mb-3 text-center">
                   {tJobs("empty.title")}
                 </h3>
-                <p className="text-slate-500 text-sm md:text-base leading-relaxed mb-8 max-w-md text-center">
+                <p className="text-[#B8B2A7] text-sm md:text-base leading-relaxed mb-8 max-w-md text-center">
                   {tJobs("empty.description")}
                 </p>
                 <a 
                   href={generalWhatsAppUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-[#10B981] hover:bg-[#059669] text-white px-6 py-3.5 rounded-2xl font-bold transition-all shadow-md active:scale-98 cursor-pointer"
+                  className="inline-flex items-center gap-2 bg-[#111111] hover:bg-[#141414] text-[#F4F1EA] border border-white/8 px-6 py-3.5 rounded-2xl font-bold transition-all shadow-md active:scale-98 cursor-pointer"
                 >
-                  <MessageCircle className="h-5 w-5 shrink-0 fill-current" />
+                  <MessageCircle className="h-5 w-5 shrink-0 fill-current text-[#B89B72]" />
                   <span>{tJobs("buttons.whatsapp")}</span>
                 </a>
               </div>
@@ -333,26 +333,26 @@ export default function CountryJobsPage() {
                   return (
                     <div 
                       key={jobId}
-                      className="w-full bg-white rounded-3xl p-6 md:p-8 border border-slate-100 hover:border-[#B6925B]/30 shadow-sm hover:shadow-xl transition-all duration-300 relative overflow-hidden flex flex-col justify-between"
+                      className="w-full bg-[#111111] rounded-3xl p-6 md:p-8 border border-white/8 hover:border-[#B89B72]/40 shadow-none transition-all duration-300 relative overflow-hidden flex flex-col justify-between"
                     >
                       {/* Top Accent line for premium/urgent highlights */}
                       {(isPremium === "YES" || isUrgent === "YES") && (
-                        <div className="absolute top-0 left-0 right-0 h-[3.5px] bg-gradient-to-r from-[#B6925B] to-[#10B981]" />
+                        <div className="absolute top-0 left-0 right-0 h-[3.5px] bg-gradient-to-r from-[#B89B72] to-[#75624A]" />
                       )}
 
                       {/* Header block with badges */}
                       <div className="flex flex-wrap justify-between items-start gap-4 mb-4">
                         <div className="space-y-1.5 flex-1 min-w-[200px]">
-                          <h3 className="text-xl md:text-2xl font-display font-extrabold text-[#0B192C] leading-snug tracking-tight">
+                          <h3 className="text-xl md:text-2xl font-display font-extrabold text-[#F4F1EA] leading-snug tracking-tight">
                             {role}
                           </h3>
-                          <div className="flex flex-wrap items-center gap-3 text-xs md:text-sm text-slate-500 font-sans">
+                          <div className="flex flex-wrap items-center gap-3 text-xs md:text-sm text-[#B8B2A7] font-sans mt-1">
                             {companyName && (
-                              <span className="font-semibold text-slate-700">{companyName}</span>
+                              <span className="font-semibold text-[#B8B2A7]">{companyName}</span>
                             )}
                             {(city || displayCountryName) && (
                               <span className="flex items-center gap-1">
-                                <MapPin className="h-3.5 w-3.5 text-[#B6925B]" />
+                                <MapPin className="h-3.5 w-3.5 text-[#B89B72]" />
                                 {city ? `${city}, ${displayCountryName}` : displayCountryName}
                               </span>
                             )}
@@ -362,13 +362,13 @@ export default function CountryJobsPage() {
                         {/* Badges Container */}
                         <div className="flex flex-wrap items-center gap-2">
                           {isUrgent === "YES" && (
-                            <span className="inline-flex items-center gap-1 bg-rose-50 border border-rose-200 text-rose-600 font-extrabold text-[10px] sm:text-xs px-2.5 py-1 rounded-full uppercase tracking-wider select-none">
+                            <span className="inline-flex items-center gap-1 bg-rose-950/20 border border-rose-900/30 text-rose-400 font-extrabold text-[10px] sm:text-xs px-2.5 py-1 rounded-full uppercase tracking-wider select-none">
                               <Clock className="h-3 w-3 shrink-0 animate-pulse" />
                               {tJobs("badges.urgent")}
                             </span>
                           )}
                           {isPremium === "YES" && (
-                            <span className="inline-flex items-center gap-1 bg-amber-50 border border-amber-200 text-amber-600 font-extrabold text-[10px] sm:text-xs px-2.5 py-1 rounded-full uppercase tracking-wider select-none">
+                            <span className="inline-flex items-center gap-1 bg-amber-950/20 border border-amber-900/30 text-amber-400 font-extrabold text-[10px] sm:text-xs px-2.5 py-1 rounded-full uppercase tracking-wider select-none">
                               <Award className="h-3 w-3 shrink-0" />
                               {tJobs("badges.premium")}
                             </span>
@@ -379,27 +379,27 @@ export default function CountryJobsPage() {
                       {/* Quick Details Chips */}
                       <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mb-6 font-sans">
                         {category && (
-                          <div className="bg-slate-50 border border-slate-100 p-2.5 rounded-2xl flex flex-col justify-center">
-                            <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wide">{tJobs("labels.category")}</span>
-                            <span className="text-xs md:text-sm font-bold text-slate-700 truncate">{category}</span>
+                          <div className="bg-[#050505] border border-white/8 p-2.5 rounded-2xl flex flex-col justify-center">
+                            <span className="text-[10px] font-bold text-[#7C756A] uppercase tracking-wide">{tJobs("labels.category")}</span>
+                            <span className="text-xs md:text-sm font-bold text-[#B8B2A7] truncate">{category}</span>
                           </div>
                         )}
                         {jobType && (
-                          <div className="bg-slate-50 border border-slate-100 p-2.5 rounded-2xl flex flex-col justify-center">
-                            <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wide">{tJobs("labels.jobType")}</span>
-                            <span className="text-xs md:text-sm font-bold text-slate-700 truncate">{jobType}</span>
+                          <div className="bg-[#050505] border border-white/8 p-2.5 rounded-2xl flex flex-col justify-center">
+                            <span className="text-[10px] font-bold text-[#7C756A] uppercase tracking-wide">{tJobs("labels.jobType")}</span>
+                            <span className="text-xs md:text-sm font-bold text-[#B8B2A7] truncate">{jobType}</span>
                           </div>
                         )}
                         {expLevel && (
-                          <div className="bg-slate-50 border border-slate-100 p-2.5 rounded-2xl flex flex-col justify-center">
-                            <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wide">{tJobs("labels.experience")}</span>
-                            <span className="text-xs md:text-sm font-bold text-slate-700 truncate">{expLevel}</span>
+                          <div className="bg-[#050505] border border-white/8 p-2.5 rounded-2xl flex flex-col justify-center">
+                            <span className="text-[10px] font-bold text-[#7C756A] uppercase tracking-wide">{tJobs("labels.experience")}</span>
+                            <span className="text-xs md:text-sm font-bold text-[#B8B2A7] truncate">{expLevel}</span>
                           </div>
                         )}
                         {salary && (
-                          <div className="bg-amber-50/40 border border-amber-100 p-2.5 rounded-2xl flex flex-col justify-center">
-                            <span className="text-[10px] font-bold text-amber-600 uppercase tracking-wide">{tJobs("labels.salaryOffered")}</span>
-                            <span className="text-xs md:text-sm font-extrabold text-[#B6925B] truncate">
+                          <div className="bg-amber-950/10 border border-amber-900/20 p-2.5 rounded-2xl flex flex-col justify-center">
+                            <span className="text-[10px] font-bold text-amber-400 uppercase tracking-wide">{tJobs("labels.salaryOffered")}</span>
+                            <span className="text-xs md:text-sm font-extrabold text-[#B89B72] truncate">
                               {currency} {salary}
                             </span>
                           </div>
@@ -409,17 +409,17 @@ export default function CountryJobsPage() {
                       {/* Job Description Block */}
                       {jobDesc && (
                         <div className="mb-6 font-sans">
-                          <p className="text-slate-600 text-sm leading-relaxed line-clamp-3">
+                          <p className="text-[#B8B2A7] text-sm leading-relaxed line-clamp-3">
                             {jobDesc}
                           </p>
                         </div>
                       )}
 
                       {/* Footer block (Posted time and Actions) */}
-                      <div className="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-slate-100">
+                      <div className="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-white/8">
                         {postedAt && (
-                          <span className="inline-flex items-center gap-1.5 text-xs text-slate-400 font-sans">
-                            <Calendar className="h-3.5 w-3.5 text-slate-400" />
+                          <span className="inline-flex items-center gap-1.5 text-xs text-[#7C756A] font-sans">
+                            <Calendar className="h-3.5 w-3.5 text-[#7C756A]" />
                             <span>{tJobs("labels.posted")} {postedAt}</span>
                           </span>
                         )}
@@ -429,19 +429,19 @@ export default function CountryJobsPage() {
                           {/* View More Details Button */}
                           <button
                             onClick={() => setSelectedJob(normalizedJob)}
-                            className="flex-1 sm:flex-none text-center px-5 py-2.5 rounded-xl border border-slate-200 hover:border-[#B6925B] bg-white hover:bg-slate-50 text-slate-700 hover:text-[#B6925B] font-bold text-xs md:text-sm transition-all duration-300 active:scale-98 cursor-pointer whitespace-nowrap font-sans"
+                            className="flex-1 sm:flex-none text-center px-5 py-2.5 rounded-xl border border-white/10 hover:border-white/30 bg-transparent text-[#B8B2A7] hover:text-white font-bold text-xs md:text-sm transition-all duration-300 active:scale-98 cursor-pointer whitespace-nowrap font-sans"
                           >
                             {tJobs("buttons.viewMore") || "View More"}
                           </button>
 
                           {/* Apply Now Attention-Grabbing Button Container */}
                           <div className="relative flex-1 sm:flex-none group">
-                            <span className="absolute -top-3.5 right-2 bg-[#0B192C] text-[#B6925B] border border-[#B6925B]/40 text-[9px] font-extrabold px-2 py-0.5 rounded-md uppercase tracking-wider animate-bounce select-none pointer-events-none whitespace-nowrap shadow-sm">
+                            <span className="absolute -top-3.5 right-2 bg-[#050505] text-[#B89B72] border border-white/8 text-[9px] font-extrabold px-2 py-0.5 rounded-md uppercase tracking-wider animate-bounce select-none pointer-events-none whitespace-nowrap shadow-sm">
                               {tJobs("buttons.startHere") || "Start here"}
                             </span>
                             <button 
                               onClick={() => setApplyJob(normalizedJob)}
-                              className="w-full flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-xl bg-[#B6925B] text-[#0B192C] hover:bg-[#0B192C] hover:text-[#B6925B] border border-[#B6925B] font-extrabold text-xs md:text-sm transition-all duration-300 shadow-md hover:shadow-lg active:scale-98 cursor-pointer whitespace-nowrap animate-gold-glow font-sans"
+                              className="w-full flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-xl bg-[#B89B72] text-[#050505] hover:bg-[#C8AD85] border-none font-extrabold text-xs md:text-sm transition-all duration-300 shadow-none active:scale-98 cursor-pointer whitespace-nowrap font-sans"
                             >
                               <span>{tJobs("buttons.applyNow")}</span>
                               <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
@@ -453,7 +453,7 @@ export default function CountryJobsPage() {
                             href={getJobWhatsAppUrl(role)}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex-1 sm:flex-none inline-flex items-center justify-center gap-1.5 px-5 py-2.5 rounded-xl border border-emerald-200 hover:border-emerald-500 bg-emerald-50 hover:bg-emerald-100/50 text-emerald-600 font-bold text-xs md:text-sm transition-all duration-300 active:scale-98 cursor-pointer"
+                            className="flex-1 sm:flex-none inline-flex items-center justify-center gap-1.5 px-5 py-2.5 rounded-xl border border-emerald-900/30 hover:border-emerald-505 bg-[#111111] hover:bg-[#141414] text-emerald-400 font-bold text-xs md:text-sm transition-all duration-300 active:scale-98 cursor-pointer"
                           >
                             <MessageCircle className="h-4.5 w-4.5 shrink-0 fill-current" />
                             <span>{tJobs("buttons.inquire")}</span>
@@ -473,17 +473,17 @@ export default function CountryJobsPage() {
       {/* Modal Popup */}
       {selectedJob && (
         <div 
-          className="fixed inset-0 z-[100] bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 md:p-6 transition-opacity duration-300 animate-in fade-in"
+          className="fixed inset-0 z-[100] bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 md:p-6 transition-opacity duration-300 animate-in fade-in"
           onClick={() => setSelectedJob(null)}
         >
           <div 
-            className="bg-white w-full max-w-2xl rounded-3xl border border-slate-100 shadow-2xl relative flex flex-col max-h-[90vh] md:max-h-[85vh] animate-in fade-in zoom-in-95 duration-200"
+            className="bg-[#111111] w-full max-w-2xl rounded-3xl border border-white/8 shadow-none relative flex flex-col max-h-[90vh] md:max-h-[85vh] animate-in fade-in zoom-in-95 duration-200"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close Button */}
             <button 
               onClick={() => setSelectedJob(null)}
-              className="absolute top-4 right-4 md:top-6 md:right-6 text-slate-400 hover:text-slate-600 transition-colors p-1.5 hover:bg-slate-100 rounded-full focus:outline-none cursor-pointer"
+              className="absolute top-4 right-4 md:top-6 md:right-6 text-neutral-400 hover:text-white transition-colors p-1.5 hover:bg-white/5 rounded-full focus:outline-none cursor-pointer"
               aria-label="Close modal"
             >
               <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
@@ -492,34 +492,34 @@ export default function CountryJobsPage() {
             </button>
 
             {/* Modal Header */}
-            <div className="p-6 md:p-8 border-b border-slate-100 pr-12 md:pr-16">
+            <div className="p-6 md:p-8 border-b border-white/8 pr-12 md:pr-16">
               {/* Badges */}
               <div className="flex flex-wrap items-center gap-2 mb-3">
                 {selectedJob.is_urgent === "YES" && (
-                  <span className="inline-flex items-center gap-1 bg-rose-50 border border-rose-200 text-rose-600 font-extrabold text-[10px] sm:text-xs px-2.5 py-1 rounded-full uppercase tracking-wider select-none">
+                  <span className="inline-flex items-center gap-1 bg-rose-950/20 border border-rose-900/30 text-rose-400 font-extrabold text-[10px] sm:text-xs px-2.5 py-1 rounded-full uppercase tracking-wider select-none">
                     <Clock className="h-3 w-3 shrink-0 animate-pulse" />
                     {tJobs("badges.urgent")}
                   </span>
                 )}
                 {selectedJob.is_premium === "YES" && (
-                  <span className="inline-flex items-center gap-1 bg-amber-50 border border-amber-200 text-amber-600 font-extrabold text-[10px] sm:text-xs px-2.5 py-1 rounded-full uppercase tracking-wider select-none">
+                  <span className="inline-flex items-center gap-1 bg-amber-950/20 border border-amber-900/30 text-amber-400 font-extrabold text-[10px] sm:text-xs px-2.5 py-1 rounded-full uppercase tracking-wider select-none">
                     <Award className="h-3 w-3 shrink-0" />
                     {tJobs("badges.premium")}
                   </span>
                 )}
               </div>
 
-              <h2 className="text-2xl md:text-3xl font-display font-extrabold text-[#0B192C] leading-snug tracking-tight">
+              <h2 className="text-2xl md:text-3xl font-display font-extrabold text-[#F4F1EA] leading-snug tracking-tight">
                 {selectedJob.role}
               </h2>
               
-              <div className="flex flex-wrap items-center gap-3 mt-2 text-xs md:text-sm text-slate-500 font-sans">
+              <div className="flex flex-wrap items-center gap-3 mt-2 text-xs md:text-sm text-[#B8B2A7] font-sans">
                 {selectedJob.company_name && (
-                  <span className="font-semibold text-slate-700">{selectedJob.company_name}</span>
+                  <span className="font-semibold text-[#B8B2A7]">{selectedJob.company_name}</span>
                 )}
                 {(selectedJob.city || displayCountryName) && (
                   <span className="flex items-center gap-1">
-                    <MapPin className="h-3.5 w-3.5 text-[#B6925B]" />
+                    <MapPin className="h-3.5 w-3.5 text-[#B89B72]" />
                     {selectedJob.city ? `${selectedJob.city}, ${displayCountryName}` : displayCountryName}
                   </span>
                 )}
@@ -531,27 +531,27 @@ export default function CountryJobsPage() {
               {/* Quick Details Grid */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 font-sans">
                 {selectedJob.category && (
-                  <div className="bg-slate-50 border border-slate-100 p-2.5 rounded-2xl flex flex-col justify-center">
-                    <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wide">{tJobs("labels.category")}</span>
-                    <span className="text-xs md:text-sm font-bold text-slate-700 truncate">{selectedJob.category}</span>
+                  <div className="bg-[#050505] border border-white/8 p-2.5 rounded-2xl flex flex-col justify-center">
+                    <span className="text-[10px] font-bold text-[#7C756A] uppercase tracking-wide">{tJobs("labels.category")}</span>
+                    <span className="text-xs md:text-sm font-bold text-[#B8B2A7] truncate">{selectedJob.category}</span>
                   </div>
                 )}
                 {selectedJob.job_type && (
-                  <div className="bg-slate-50 border border-slate-100 p-2.5 rounded-2xl flex flex-col justify-center">
-                    <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wide">{tJobs("labels.jobType")}</span>
-                    <span className="text-xs md:text-sm font-bold text-slate-700 truncate">{selectedJob.job_type}</span>
+                  <div className="bg-[#050505] border border-white/8 p-2.5 rounded-2xl flex flex-col justify-center">
+                    <span className="text-[10px] font-bold text-[#7C756A] uppercase tracking-wide">{tJobs("labels.jobType")}</span>
+                    <span className="text-xs md:text-sm font-bold text-[#B8B2A7] truncate">{selectedJob.job_type}</span>
                   </div>
                 )}
                 {selectedJob.experience_level && (
-                  <div className="bg-slate-50 border border-slate-100 p-2.5 rounded-2xl flex flex-col justify-center">
-                    <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wide">{tJobs("labels.experience")}</span>
-                    <span className="text-xs md:text-sm font-bold text-slate-700 truncate">{selectedJob.experience_level}</span>
+                  <div className="bg-[#050505] border border-white/8 p-2.5 rounded-2xl flex flex-col justify-center">
+                    <span className="text-[10px] font-bold text-[#7C756A] uppercase tracking-wide">{tJobs("labels.experience")}</span>
+                    <span className="text-xs md:text-sm font-bold text-[#B8B2A7] truncate">{selectedJob.experience_level}</span>
                   </div>
                 )}
                 {selectedJob.salary && (
-                  <div className="bg-amber-50/40 border border-amber-100 p-2.5 rounded-2xl flex flex-col justify-center">
-                    <span className="text-[10px] font-bold text-amber-600 uppercase tracking-wide">{tJobs("labels.salaryOffered")}</span>
-                    <span className="text-xs md:text-sm font-extrabold text-[#B6925B] truncate">
+                  <div className="bg-amber-950/10 border border-amber-900/20 p-2.5 rounded-2xl flex flex-col justify-center">
+                    <span className="text-[10px] font-bold text-amber-400 uppercase tracking-wide">{tJobs("labels.salaryOffered")}</span>
+                    <span className="text-xs md:text-sm font-extrabold text-[#B89B72] truncate">
                       {selectedJob.currency} {selectedJob.salary}
                     </span>
                   </div>
@@ -561,8 +561,8 @@ export default function CountryJobsPage() {
               {/* Full Description */}
               {selectedJob.job_description && (
                 <div className="space-y-2">
-                  <h4 className="text-sm font-bold uppercase tracking-wider text-slate-400 font-sans">Job Description</h4>
-                  <p className="text-slate-600 text-sm md:text-base leading-relaxed whitespace-pre-line font-sans">
+                  <h4 className="text-sm font-bold uppercase tracking-wider text-[#7C756A] font-sans">Job Description</h4>
+                  <p className="text-[#B8B2A7] text-sm md:text-base leading-relaxed whitespace-pre-line font-sans">
                     {selectedJob.job_description}
                   </p>
                 </div>
@@ -570,12 +570,12 @@ export default function CountryJobsPage() {
 
               {/* Requirements */}
               {selectedJob.requirements && parseBulletPoints(selectedJob.requirements).length > 0 && (
-                <div className="space-y-2 pt-2 border-t border-slate-50">
-                  <h4 className="text-sm font-bold uppercase tracking-wider text-slate-400 font-sans">Requirements</h4>
+                <div className="space-y-2 pt-2 border-t border-white/8">
+                  <h4 className="text-sm font-bold uppercase tracking-wider text-[#7C756A] font-sans">Requirements</h4>
                   <ul className="space-y-2.5 font-sans">
                     {parseBulletPoints(selectedJob.requirements).map((req, i) => (
-                      <li key={i} className="flex items-start gap-2 text-slate-600 text-sm md:text-base leading-relaxed">
-                        <span className="text-[#B6925B] font-bold shrink-0 select-none mt-1">&#8226;</span>
+                      <li key={i} className="flex items-start gap-2 text-[#B8B2A7] text-sm md:text-base leading-relaxed">
+                        <span className="text-[#B89B72] font-bold shrink-0 select-none mt-1">&#8226;</span>
                         <span>{req}</span>
                       </li>
                     ))}
@@ -585,12 +585,12 @@ export default function CountryJobsPage() {
 
               {/* Benefits */}
               {selectedJob.benefits && parseBulletPoints(selectedJob.benefits).length > 0 && (
-                <div className="space-y-2 pt-2 border-t border-slate-50">
-                  <h4 className="text-sm font-bold uppercase tracking-wider text-slate-400 font-sans">Benefits</h4>
+                <div className="space-y-2 pt-2 border-t border-white/8">
+                  <h4 className="text-sm font-bold uppercase tracking-wider text-[#7C756A] font-sans">Benefits</h4>
                   <ul className="space-y-2.5 font-sans">
                     {parseBulletPoints(selectedJob.benefits).map((benefit, i) => (
-                      <li key={i} className="flex items-start gap-2 text-slate-600 text-sm md:text-base leading-relaxed">
-                        <span className="text-[#B6925B] font-bold shrink-0 select-none mt-1">&#8226;</span>
+                      <li key={i} className="flex items-start gap-2 text-[#B8B2A7] text-sm md:text-base leading-relaxed">
+                        <span className="text-[#B89B72] font-bold shrink-0 select-none mt-1">&#8226;</span>
                         <span>{benefit}</span>
                       </li>
                     ))}
@@ -600,13 +600,13 @@ export default function CountryJobsPage() {
             </div>
 
             {/* Modal Footer Actions */}
-            <div className="p-6 md:p-8 bg-slate-50 border-t border-slate-100 rounded-b-3xl flex flex-col sm:flex-row items-stretch sm:items-center justify-end gap-3">
+            <div className="p-6 md:p-8 bg-[#0B0B0B] border-t border-white/8 rounded-b-3xl flex flex-col sm:flex-row items-stretch sm:items-center justify-end gap-3">
               {/* WhatsApp Button */}
               <a 
                 href={getJobWhatsAppUrl(selectedJob.role)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 sm:flex-none inline-flex items-center justify-center gap-1.5 px-5 py-3 rounded-xl border border-emerald-200 hover:border-emerald-500 bg-emerald-50 hover:bg-emerald-100/50 text-emerald-600 font-bold text-xs md:text-sm transition-all duration-300 active:scale-98 cursor-pointer"
+                className="flex-1 sm:flex-none inline-flex items-center justify-center gap-1.5 px-5 py-3 rounded-xl border border-emerald-900/30 hover:border-emerald-500 bg-[#111111] hover:bg-[#141414] text-emerald-400 font-bold text-xs md:text-sm transition-all duration-300 active:scale-98 cursor-pointer"
               >
                 <MessageCircle className="h-4.5 w-4.5 shrink-0 fill-current" />
                 <span>{tJobs("buttons.inquire")}</span>
@@ -614,7 +614,7 @@ export default function CountryJobsPage() {
 
               {/* Apply Now Attention-Grabbing Button Container */}
               <div className="relative flex-1 sm:flex-none group">
-                <span className="absolute -top-3.5 right-2 bg-[#0B192C] text-[#B6925B] border border-[#B6925B]/40 text-[9px] font-extrabold px-2 py-0.5 rounded-md uppercase tracking-wider animate-bounce select-none pointer-events-none whitespace-nowrap shadow-sm">
+                <span className="absolute -top-3.5 right-2 bg-[#050505] text-[#B89B72] border border-white/8 text-[9px] font-extrabold px-2 py-0.5 rounded-md uppercase tracking-wider animate-bounce select-none pointer-events-none whitespace-nowrap shadow-sm">
                   {tJobs("buttons.startHere") || "Start here"}
                 </span>
                 <button 
@@ -622,7 +622,7 @@ export default function CountryJobsPage() {
                     setApplyJob(selectedJob);
                     setSelectedJob(null);
                   }}
-                  className="w-full flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[#B6925B] text-[#0B192C] hover:bg-[#0B192C] hover:text-[#B6925B] border border-[#B6925B] font-extrabold text-xs md:text-sm transition-all duration-300 shadow-md hover:shadow-lg active:scale-98 cursor-pointer whitespace-nowrap animate-gold-glow font-sans"
+                  className="w-full flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[#B89B72] text-[#050505] hover:bg-[#C8AD85] border-none font-extrabold text-xs md:text-sm transition-all duration-300 shadow-none active:scale-98 cursor-pointer whitespace-nowrap font-sans"
                 >
                   <span>{tJobs("buttons.applyNow")}</span>
                   <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
@@ -636,17 +636,17 @@ export default function CountryJobsPage() {
       {/* Apply Now Modal Popup */}
       {applyJob && (
         <div 
-          className="fixed inset-0 z-[110] bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 md:p-6 transition-opacity duration-300 animate-in fade-in"
+          className="fixed inset-0 z-[110] bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 md:p-6 transition-opacity duration-300 animate-in fade-in"
           onClick={() => setApplyJob(null)}
         >
           <div 
-            className="bg-white w-full max-w-2xl rounded-3xl border border-slate-100 shadow-2xl relative flex flex-col max-h-[90vh] md:max-h-[85vh] animate-in fade-in zoom-in-95 duration-200"
+            className="bg-[#111111] w-full max-w-2xl rounded-3xl border border-white/8 shadow-none relative flex flex-col max-h-[90vh] md:max-h-[85vh] animate-in fade-in zoom-in-95 duration-200"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close Button */}
             <button 
               onClick={() => setApplyJob(null)}
-              className="absolute top-4 right-4 md:top-6 md:right-6 text-slate-400 hover:text-slate-600 transition-colors p-1.5 hover:bg-slate-100 rounded-full focus:outline-none cursor-pointer"
+              className="absolute top-4 right-4 md:top-6 md:right-6 text-neutral-400 hover:text-white transition-colors p-1.5 hover:bg-white/5 rounded-full focus:outline-none cursor-pointer"
               aria-label="Close modal"
             >
               <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
@@ -655,11 +655,11 @@ export default function CountryJobsPage() {
             </button>
 
             {/* Modal Header */}
-            <div className="p-6 md:p-8 border-b border-slate-100 pr-12 md:pr-16">
-              <h2 className="text-xl md:text-2xl font-display font-extrabold text-[#0B192C] leading-snug tracking-tight">
+            <div className="p-6 md:p-8 border-b border-white/8 pr-12 md:pr-16">
+              <h2 className="text-xl md:text-2xl font-display font-extrabold text-[#F4F1EA] leading-snug tracking-tight">
                 Apply for {applyJob.role}
               </h2>
-              <p className="text-xs md:text-sm text-slate-500 font-sans mt-1">
+              <p className="text-xs md:text-sm text-[#B8B2A7] font-sans mt-1">
                 Our team will contact you on WhatsApp or call.
               </p>
             </div>

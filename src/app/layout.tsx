@@ -50,8 +50,8 @@ const malayalamFont = Noto_Sans_Malayalam({
 
 // Next.js Metadata API configuration for high-end SEO indexing
 export const metadata: Metadata = {
-  title: "Trendy Fortune | Overseas Recruitment & Manpower Consultancy",
-  description: "Trendy Fortune provides premium overseas job placement, skilled manpower supply, work permit assistance, study visa support, and global career consulting for job seekers and employers.",
+  title: "TricksNTrading | Overseas Recruitment & Manpower Consultancy",
+  description: "TricksNTrading provides premium overseas job placement, skilled manpower supply, work permit assistance, study visa support, and global career consulting for job seekers and employers.",
   keywords: [
     "overseas recruitment agency",
     "manpower consultancy",
@@ -68,7 +68,7 @@ export const metadata: Metadata = {
     "Europe visa agency"
   ],
   alternates: {
-    canonical: "https://www.trendyfortune.com"
+    canonical: "https://www.tricksntrading.com"
   },
   robots: {
     index: true,
@@ -82,16 +82,16 @@ export const metadata: Metadata = {
     }
   },
   openGraph: {
-    title: "Trendy Fortune | Overseas Recruitment & Manpower Consultancy",
+    title: "TricksNTrading | Overseas Recruitment & Manpower Consultancy",
     description: "Verified global career placements and reliable bulk manpower supply across GCC, Europe, and North America.",
-    url: "https://www.trendyfortune.com",
-    siteName: "Trendy Fortune",
+    url: "https://www.tricksntrading.com",
+    siteName: "TricksNTrading",
     images: [
       {
-        url: "https://www.trendyfortune.com/og-image.jpg",
+        url: "https://www.tricksntrading.com/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Trendy Fortune Overseas Recruitment Network"
+        alt: "TricksNTrading Overseas Recruitment Network"
       }
     ],
     locale: "en_US",
@@ -99,9 +99,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Trendy Fortune | Overseas Recruitment & Manpower Consultancy",
+    title: "TricksNTrading | Overseas Recruitment & Manpower Consultancy",
     description: "Helping skilled professionals find global opportunities and helping employers hire certified workforce worldwide.",
-    images: ["https://www.trendyfortune.com/og-image.jpg"]
+    images: ["https://www.tricksntrading.com/og-image.jpg"]
   }
 };
 
@@ -114,11 +114,11 @@ export default function RootLayout({
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "EmploymentAgency",
-    "name": "Trendy Fortune",
-    "image": "https://www.trendyfortune.com/og-image.jpg",
+    "name": "TricksNTrading",
+    "image": "https://www.tricksntrading.com/og-image.jpg",
     "description": "Overseas recruitment agency supplying skilled technical manpower and work permit visa support.",
-    "@id": "https://www.trendyfortune.com/#agency",
-    "url": "https://www.trendyfortune.com",
+    "@id": "https://www.tricksntrading.com/#agency",
+    "url": "https://www.tricksntrading.com",
     "telephone": CONTACT_INFO.phone,
     "address": {
       "@type": "PostalAddress",
@@ -147,9 +147,9 @@ export default function RootLayout({
       "closes": "18:30"
     },
     "sameAs": [
-      "https://www.facebook.com/trendyfortune",
-      "https://www.linkedin.com/company/trendyfortune",
-      "https://www.instagram.com/trendyfortune"
+      "https://www.facebook.com/tricksntrading",
+      "https://www.linkedin.com/company/tricksntrading",
+      "https://www.instagram.com/tricksntrading"
     ]
   };
 
@@ -162,7 +162,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="min-h-full flex flex-col bg-white">
+      <body className="min-h-full flex flex-col bg-[#050505] text-[#F5F5F5]">
         <LanguageProvider>
           <Providers>{children}</Providers>
         </LanguageProvider>
