@@ -13,6 +13,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { CONTACT_INFO } from "@/constants";
 
 // Morning slots
 const MORNING_SLOTS = ["10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM"];
@@ -142,6 +143,7 @@ function AppointmentBookingFlow() {
   // Configure Form hook
   const appointmentForm = useForm<AppointmentFormValues>({
     resolver: zodResolver(appointmentSchema),
+    shouldFocusError: false,
     defaultValues: {
       visitorType: "Candidate",
       applicationId: "",
@@ -311,7 +313,7 @@ function AppointmentBookingFlow() {
   };
 
   const getWhatsAppLink = (appId: string | undefined, appointmentId: string) => {
-    const phone = "918700917348";
+    const phone = "919874259915";
     const cleanApptId = appointmentId.trim().replace(/\s+/g, "");
     const cleanAppId = appId?.trim().replace(/\s+/g, "");
     
@@ -460,11 +462,11 @@ function AppointmentBookingFlow() {
             <div className="relative">
               <select
                 id="appt-visitor-type"
-                className="flex h-11 w-full rounded-xl border border-white/10 bg-[#050505] text-[#F4F1EA] px-4 py-2 text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B89B72] focus-visible:ring-offset-2 appearance-none cursor-pointer"
+                className="flex h-14 w-full rounded-2xl border border-white/10 bg-[#050505] text-white px-5 py-2 text-base outline-none focus:border-[#B89B72]/60 focus:ring-2 focus:ring-[#B89B72]/20 appearance-none cursor-pointer"
                 {...appointmentForm.register("visitorType")}
               >
-                <option value="Candidate" className="bg-[#111111] text-[#F4F1EA]">{t("candidateOption")}</option>
-                <option value="B2B Partner" className="bg-[#111111] text-[#F4F1EA]">{t("partnerOption")}</option>
+                <option value="Candidate" className="bg-[#050505] text-white">{t("candidateOption")}</option>
+                <option value="B2B Partner" className="bg-[#050505] text-white">{t("partnerOption")}</option>
               </select>
               <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-[#7C756A]">
                 ▼
@@ -572,13 +574,13 @@ function AppointmentBookingFlow() {
             <div className="relative">
               <select
                 id="appt-type"
-                className={`flex h-11 w-full rounded-xl border border-white/10 bg-[#050505] text-[#F4F1EA] px-4 py-2 text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B89B72] focus-visible:ring-offset-2 appearance-none cursor-pointer ${
-                  appointmentForm.formState.errors.appointmentType ? "border-red-500" : ""
+                className={`flex h-14 w-full rounded-2xl border border-white/10 bg-[#050505] text-white px-5 py-2 text-base outline-none focus:border-[#B89B72]/60 focus:ring-2 focus:ring-[#B89B72]/20 appearance-none cursor-pointer ${
+                  appointmentForm.formState.errors.appointmentType ? "border-red-500 focus:ring-red-500/20" : ""
                 }`}
                 {...appointmentForm.register("appointmentType")}
               >
-                <option value="Online Appointment" className="bg-[#111111] text-[#F4F1EA]">{t("onlineApp")}</option>
-                <option value="Office Visit" className="bg-[#111111] text-[#F4F1EA]">{t("officeVisit")}</option>
+                <option value="Online Appointment" className="bg-[#050505] text-white">{t("onlineApp")}</option>
+                <option value="Office Visit" className="bg-[#050505] text-white">{t("officeVisit")}</option>
               </select>
               <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-[#7C756A]">
                 ▼
@@ -591,8 +593,8 @@ function AppointmentBookingFlow() {
                 <MapPin className="h-5 w-5 text-[#B89B72] shrink-0 mt-0.5" />
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-wide text-[#7C756A]">Office Location</p>
-                  <p className="text-sm font-semibold mt-1">
-                    Office No-C616-C617, NoidaOne Tower C, Sector 62, Noida, U.P. - 201309
+                  <p className="text-sm font-semibold mt-1 whitespace-pre-line">
+                    {CONTACT_INFO.address}
                   </p>
                 </div>
               </div>
@@ -617,8 +619,8 @@ function AppointmentBookingFlow() {
             <Input
               id="appt-date"
               type="date"
-              min={todayStr}
-              error={!!appointmentForm.formState.errors.appointmentDate}
+              min={new Date().toISOString().split("T")[0]}
+              className="h-14 w-full rounded-2xl border border-white/10 bg-black/60 px-5 text-base text-white outline-none [color-scheme:dark] placeholder:text-neutral-500 focus:border-[#B89B72]/60 focus:ring-2 focus:ring-[#B89B72]/20"
               {...appointmentForm.register("appointmentDate")}
             />
             {appointmentForm.formState.errors.appointmentDate && (
@@ -693,12 +695,13 @@ function AppointmentBookingFlow() {
             variant="primary"
             className="w-full justify-center gap-2 h-12 font-extrabold text-sm transition-all duration-300 shadow-none rounded-xl"
             isLoading={isSubmitting}
+            disabled={isSubmitting}
           >
             <Send className="h-4 w-4 shrink-0" />
             <span>{isSubmitting ? t("bookingText") : t("bookBtn")}</span>
           </Button>
           <a
-            href="https://wa.me/918700917348?text=Hi%20TricksNTrading%2C%20I%20want%20to%20book%20an%20appointment."
+            href="https://wa.me/919874259915?text=Hi%20TricksNTrading%2C%20I%20want%20to%20book%20an%20appointment."
             target="_blank"
             rel="noopener noreferrer"
             className="w-full flex items-center justify-center gap-2 h-12 bg-[#10B981] hover:bg-[#059669] text-white rounded-xl font-bold text-sm transition-all active:scale-[0.98] cursor-pointer font-sans"
@@ -717,7 +720,7 @@ export default function AppointmentPage() {
     <>
       <Navbar />
 
-      <main className="flex-1 w-full bg-[#050505] text-[#F4F1EA] pt-32 pb-20 px-4">
+      <main className="flex-1 w-full bg-[#050505] text-[#F4F1EA] pt-32 pb-28 md:pb-20 px-4">
         <div className="max-w-7xl mx-auto space-y-6">
           <div className="max-w-4xl mx-auto">
             <a

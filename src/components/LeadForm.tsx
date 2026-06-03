@@ -27,6 +27,7 @@ export function LeadForm() {
   // Employer Form hook
   const employerForm = useForm<EmployerFormValues>({
     resolver: zodResolver(employerSchema),
+    shouldFocusError: false,
     defaultValues: {
       companyName: "",
       contactPerson: "",
@@ -133,7 +134,7 @@ export function LeadForm() {
   };
 
   return (
-    <section id="for-employers" className="py-20 bg-[#080808] relative overflow-hidden border-t border-[rgba(255,255,255,0.07)]">
+    <section id="for-employers" className="pt-20 pb-28 md:pb-20 bg-[#080808] relative overflow-hidden border-t border-[rgba(255,255,255,0.07)]">
       {/* Anchor targets for hash navigation and scrolling */}
       <div id="job-seeker" className="absolute top-0 left-0 h-0 w-0 pointer-events-none" />
       <div id="employer" className="absolute top-0 left-0 h-0 w-0 pointer-events-none" />
@@ -279,14 +280,14 @@ export function LeadForm() {
                       <div className="relative">
                         <select
                           id="industry"
-                          className={`flex h-11 w-full rounded-xl border border-[rgba(255,255,255,0.09)] bg-[#101010] text-[#F5F1E8] px-4 py-2 text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B89B72] focus-visible:ring-offset-2 appearance-none cursor-pointer ${
-                            employerForm.formState.errors.industry ? "border-red-500" : ""
+                          className={`flex h-14 w-full rounded-2xl border border-white/10 bg-[#050505] text-white px-5 py-2 text-base outline-none focus:border-[#B89B72]/60 focus:ring-2 focus:ring-[#B89B72]/20 appearance-none cursor-pointer ${
+                            employerForm.formState.errors.industry ? "border-red-500 focus:ring-red-500/20" : ""
                           }`}
                           {...employerForm.register("industry")}
                         >
-                          <option value="" className="bg-[#111111]">Select industry...</option>
+                          <option value="" className="bg-[#050505] text-[#7D766B]">Select industry...</option>
                           {INDUSTRIES.map((ind) => (
-                            <option key={ind.id} value={ind.name} className="bg-[#111111]">
+                            <option key={ind.id} value={ind.name} className="bg-[#050505] text-white">
                               {ind.name}
                             </option>
                           ))}
@@ -371,7 +372,7 @@ export function LeadForm() {
                     <input
                       id="employerConsent"
                       type="checkbox"
-                      className="mt-0.5 h-5 w-5 rounded border-[rgba(255,255,255,0.09)] bg-[#101010] text-[#B89B72] focus:ring-[#B89B72] cursor-pointer"
+                      className="mt-0.5 h-5 w-5 rounded border-white/10 bg-[#050505] text-[#B89B72] focus:ring-[#B89B72] cursor-pointer"
                       {...employerForm.register("consent")}
                     />
                     <span className="text-sm text-[#A3A3A3] leading-snug">
@@ -398,11 +399,12 @@ export function LeadForm() {
                   <Button
                     type="submit"
                     variant="primary"
-                    className="w-full justify-center gap-2 h-12 shadow-lg cursor-pointer"
+                    className="w-full justify-center gap-2 h-12 shadow-lg cursor-pointer rounded-xl"
                     isLoading={isSubmittingEmployer}
+                    disabled={isSubmittingEmployer}
                   >
                     <Send className="h-4 w-4" />
-                    {t("submit_employer")}
+                    {isSubmittingEmployer ? "Submitting..." : t("submit_employer")}
                   </Button>
                 </motion.form>
               )}

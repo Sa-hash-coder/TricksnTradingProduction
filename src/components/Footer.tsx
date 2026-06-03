@@ -156,7 +156,7 @@ export function Footer() {
               </li>
               <li className="flex items-start gap-3 leading-relaxed">
                 <MapPin className="h-4 w-4 text-[#B89B72] shrink-0 mt-1" />
-                <span>{CONTACT_INFO.address}</span>
+                <span className="whitespace-pre-line">{CONTACT_INFO.address}</span>
               </li>
             </ul>
           </div>

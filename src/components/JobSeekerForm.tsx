@@ -50,6 +50,7 @@ export function JobSeekerForm({
 
   const seekerForm = useForm<JobSeekerFormValues>({
     resolver: zodResolver(jobSeekerSchema),
+    shouldFocusError: false,
     defaultValues: {
       fullName: "",
       phone: "",
@@ -184,7 +185,7 @@ export function JobSeekerForm({
   };
 
   const getSuccessWhatsAppLink = (appId: string) => {
-    const phone = "918700917348";
+    const phone = "919874259915";
     const text = `Hi TricksNTrading, I submitted my application. My Application ID is ${appId.trim().replace(/\s+/g, "")}. I want to continue the process.`;
     return `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
   };
@@ -207,7 +208,7 @@ export function JobSeekerForm({
         passport_status: data.passportStatus,
         cv_file_name: seekerCvName || "No file uploaded",
         message: data.message || "",
-        consent: data.consent ? "Agreed" : "Not Agreed",
+        consent: data.consent === true,
         status: "PENDING",
         payment_status: "Pending",
         payment_required: "YES",
@@ -215,6 +216,8 @@ export function JobSeekerForm({
         submitted_at: new Date().toISOString(),
         website: data.website || "", // honeypot field
       };
+
+      console.log("Application submit payload", applicationsPayload);
 
       const res = await fetch("/api/applications", {
         method: "POST",
@@ -232,7 +235,11 @@ export function JobSeekerForm({
       }
 
       if (!res.ok || !result.success) {
-        throw new Error(result.error || "Backend server returned an error during submission.");
+        const errorMsg = result.message || result.error || "Backend server returned an error during submission.";
+        const missing = result.missingFields && Array.isArray(result.missingFields) && result.missingFields.length > 0
+          ? ` (Missing fields: ${result.missingFields.join(", ")})`
+          : "";
+        throw new Error(`${errorMsg}${missing}`);
       }
 
       if (!result.application_id) {
@@ -418,7 +425,7 @@ export function JobSeekerForm({
                 Payment gateway will be available soon. Our team can also assist you on WhatsApp to complete your payment.
               </p>
               <a
-                href={`https://wa.me/918700917348?text=${encodeURIComponent(
+                href={`https://wa.me/919874259915?text=${encodeURIComponent(
                   `Hi TricksNTrading, I submitted my application. My Application ID is ${cleanId}. I want to complete the payment.`
                 )}`}
                 target="_blank"
@@ -540,14 +547,14 @@ export function JobSeekerForm({
           <div className="relative">
             <select
               id="preferredCountry"
-              className={`flex h-11 w-full rounded-xl border border-white/10 bg-[#050505] text-[#F4F1EA] px-4 py-2 text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B89B72] focus-visible:ring-offset-2 appearance-none cursor-pointer ${
-                seekerForm.formState.errors.preferredCountry ? "border-red-500" : ""
+              className={`flex h-14 w-full rounded-2xl border border-white/10 bg-[#050505] text-white px-5 py-2 text-base outline-none focus:border-[#B89B72]/60 focus:ring-2 focus:ring-[#B89B72]/20 appearance-none cursor-pointer ${
+                seekerForm.formState.errors.preferredCountry ? "border-red-500 focus:ring-red-500/20" : ""
               }`}
               {...seekerForm.register("preferredCountry")}
             >
-              <option value="" className="bg-[#111111] text-[#F4F1EA]">Select country...</option>
+              <option value="" className="bg-[#050505] text-[#7C756A]">Select country...</option>
               {CENTRAL_COUNTRIES.map((c: CountryData) => (
-                <option key={c.slug} value={c.name} className="bg-[#111111] text-[#F4F1EA]">
+                <option key={c.slug} value={c.name} className="bg-[#050505] text-white">
                   {getFlagEmoji(c.countryCode)} {c.name}
                 </option>
               ))}
@@ -585,16 +592,16 @@ export function JobSeekerForm({
           <div className="relative">
             <select
               id="experience"
-              className={`flex h-11 w-full rounded-xl border border-white/10 bg-[#050505] text-[#F4F1EA] px-4 py-2 text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B89B72] focus-visible:ring-offset-2 appearance-none cursor-pointer ${
-                seekerForm.formState.errors.experience ? "border-red-500" : ""
+              className={`flex h-14 w-full rounded-2xl border border-white/10 bg-[#050505] text-white px-5 py-2 text-base outline-none focus:border-[#B89B72]/60 focus:ring-2 focus:ring-[#B89B72]/20 appearance-none cursor-pointer ${
+                seekerForm.formState.errors.experience ? "border-red-500 focus:ring-red-500/20" : ""
               }`}
               {...seekerForm.register("experience")}
             >
-              <option value="" className="bg-[#111111] text-[#F4F1EA]">Select experience...</option>
-              <option value="Fresher" className="bg-[#111111] text-[#F4F1EA]">Fresher</option>
-              <option value="1-2 Years" className="bg-[#111111] text-[#F4F1EA]">1-2 Years</option>
-              <option value="2-5 Years" className="bg-[#111111] text-[#F4F1EA]">2-5 Years</option>
-              <option value="5+ Years" className="bg-[#111111] text-[#F4F1EA]">5+ Years</option>
+              <option value="" className="bg-[#050505] text-[#7C756A]">Select experience...</option>
+              <option value="Fresher" className="bg-[#050505] text-white">Fresher</option>
+              <option value="1-2 Years" className="bg-[#050505] text-white">1-2 Years</option>
+              <option value="2-5 Years" className="bg-[#050505] text-white">2-5 Years</option>
+              <option value="5+ Years" className="bg-[#050505] text-white">5+ Years</option>
             </select>
             <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-[#7C756A]">
               ▼
@@ -613,15 +620,15 @@ export function JobSeekerForm({
           <div className="relative">
             <select
               id="passportStatus"
-              className={`flex h-11 w-full rounded-xl border border-white/10 bg-[#050505] text-[#F4F1EA] px-4 py-2 text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B89B72] focus-visible:ring-offset-2 appearance-none cursor-pointer ${
-                seekerForm.formState.errors.passportStatus ? "border-red-500" : ""
+              className={`flex h-14 w-full rounded-2xl border border-white/10 bg-[#050505] text-white px-5 py-2 text-base outline-none focus:border-[#B89B72]/60 focus:ring-2 focus:ring-[#B89B72]/20 appearance-none cursor-pointer ${
+                seekerForm.formState.errors.passportStatus ? "border-red-500 focus:ring-red-500/20" : ""
               }`}
               {...seekerForm.register("passportStatus")}
             >
-              <option value="" className="bg-[#111111] text-[#F4F1EA]">Select passport status...</option>
-              <option value="Yes, I have passport" className="bg-[#111111] text-[#F4F1EA]">Yes, I have passport</option>
-              <option value="No, but I have applied" className="bg-[#111111] text-[#F4F1EA]">No, but I have applied</option>
-              <option value="No, I have not applied" className="bg-[#111111] text-[#F4F1EA]">No, I have not applied</option>
+              <option value="" className="bg-[#050505] text-[#7C756A]">Select passport status...</option>
+              <option value="Yes, I have passport" className="bg-[#050505] text-white">Yes, I have passport</option>
+              <option value="No, but I have applied" className="bg-[#050505] text-white">No, but I have applied</option>
+              <option value="No, I have not applied" className="bg-[#050505] text-white">No, I have not applied</option>
             </select>
             <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-[#7C756A]">
               ▼
@@ -729,9 +736,10 @@ export function JobSeekerForm({
           variant="primary"
           className="w-full justify-center gap-2 h-12 font-extrabold text-sm transition-all duration-300 shadow-md hover:shadow-lg active:scale-98 cursor-pointer rounded-xl"
           isLoading={isSubmitting}
+          disabled={isSubmitting}
         >
           <Send className="h-4 w-4 shrink-0" />
-          <span>Submit Application</span>
+          <span>{isSubmitting ? "Submitting..." : "Submit Application"}</span>
         </Button>
         <p className="text-xs text-center text-neutral-500 font-sans">
           Our team will contact you on WhatsApp/call.

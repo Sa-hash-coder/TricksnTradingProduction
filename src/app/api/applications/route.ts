@@ -52,6 +52,14 @@ export async function POST(request: NextRequest) {
   // Remove honeypot before forwarding
   delete sanitized.website;
 
+  const consentValue = String(body.consent || "").toLowerCase();
+  sanitized.consent =
+    body.consent === true ||
+    consentValue === "true" ||
+    consentValue === "yes" ||
+    consentValue === "agreed" ||
+    consentValue === "on";
+
   // ── Forward to Apps Script ────────────────────────────────────────
   try {
     const response = await fetch(scriptUrl, {

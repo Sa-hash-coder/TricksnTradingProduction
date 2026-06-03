@@ -99,7 +99,7 @@ export function ContactSection() {
                   </div>
                   <div>
                     <h4 className="font-display font-bold text-xs text-neutral-500 uppercase tracking-wider">{t("address")}</h4>
-                    <p className="font-sans font-semibold text-sm text-neutral-300 mt-0.5 leading-relaxed">
+                    <p className="font-sans font-semibold text-sm text-neutral-300 mt-0.5 leading-relaxed whitespace-pre-line">
                       {CONTACT_INFO.address}
                     </p>
                   </div>

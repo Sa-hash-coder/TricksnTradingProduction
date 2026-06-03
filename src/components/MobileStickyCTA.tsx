@@ -7,7 +7,7 @@ import { useLanguage } from "@/context/LanguageContext";
 import { CONTACT_INFO } from "@/constants";
 
 export function getWhatsAppLink(locale: string) {
-  const phone = "918700917348";
+  const phone = "919874259915";
   let text = "Hi TricksNTrading, I want to know more about overseas jobs";
   if (locale === "hi") {
     text = "नमस्ते TricksNTrading, मुझे विदेश नौकरी के बारे में जानकारी चाहिए। मेरा नाम: ___, जिला: ___, काम: ___, अनुभव: ___";

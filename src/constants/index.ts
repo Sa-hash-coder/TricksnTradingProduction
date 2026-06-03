@@ -27,13 +27,13 @@ export interface Step {
 }
 
 export const CONTACT_INFO = {
-  phone: "+91 8700917348",
-  phoneRaw: "+918700917348",
-  email: "info@tricksntrading.com",
-  address: "Office No-C616-C617, NoidaOne Tower C, Sector 62, Noida, U.P. - 201309",
-  whatsappUrl: "https://wa.me/918700917348?text=Hi%20TricksNTrading%2C%20I%20want%20to%20know%20more%20about%20overseas%20jobs.",
-  whatsappNumber: "+91 8700917348",
-  mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.1384021571477!2d77.3621457!3d28.6255734!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce5a5d1cb37ab%3A0x6b8bc27f10b777a2!2sNoidaOne%20Tower%20C%2C%20Sector%2062%2C%20Noida%2C%20Uttar%20Pradesh%20201309!5e0!3m2!1sen!2sin!4v1716768393849!5m2!1sen!2sin"
+  phone: "+91 98742 59915",
+  phoneRaw: "+919874259915",
+  email: "info@tricksntrading.co.in",
+  address: "Unit No. 825, Lodha Signet 1\nPremier Colony Ground, Kalyan\nThane, Maharashtra - 421204",
+  whatsappUrl: "https://wa.me/919874259915?text=Hi%20TricksNTrading%2C%20I%20want%20to%20know%20more%20about%20overseas%20jobs.",
+  whatsappNumber: "+91 98742 59915",
+  mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3768.9669647226685!2d73.0653066750734!3d19.15787688206972!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7bf7b6c7a7b87%3A0x6b8d4f4e2c8a1e5!2sLodha%20Signet!5e0!3m2!1sen!2sin!4v1717436000000!5m2!1sen!2sin"
 };
 
 export const COUNTRIES: Country[] = [

@@ -6,7 +6,16 @@ import { Button } from "./ui/button";
 import { useTranslations } from "next-intl";
 import { useLanguage } from "@/context/LanguageContext";
 import { getWhatsAppLink } from "./MobileStickyCTA";
-import { InteractiveWorldMap } from "./InteractiveWorldMap";
+import dynamic from "next/dynamic";
+
+const HeroGlobe = dynamic(() => import("./HeroGlobe").then(mod => mod.HeroGlobe), {
+  ssr: false,
+  loading: () => (
+    <div className="w-full aspect-square max-w-[320px] sm:max-w-[400px] lg:max-w-[500px] mx-auto flex items-center justify-center">
+      <div className="w-10 h-10 rounded-full border-2 border-[#B89B72]/20 border-t-[#B89B72] animate-spin" />
+    </div>
+  ),
+});
 
 export function Hero() {
   const t = useTranslations("hero");
@@ -33,88 +42,99 @@ export function Hero() {
   };
 
   return (
-    <section id="home" className="relative pt-24 pb-12 xs:pt-32 xs:pb-20 md:pt-40 md:pb-28 lg:py-0 lg:h-screen lg:max-h-[850px] xl:max-h-[920px] lg:min-h-[750px] flex items-center overflow-hidden bg-[#050505]">
+    <section
+      id="home"
+      className="relative bg-[#050505] pt-[150px] pb-24 md:pt-[160px] md:pb-24 lg:pt-[170px] lg:pb-24 overflow-visible"
+    >
       {/* Decorative Blur Blobs */}
       <div className="absolute top-0 right-0 -z-10 w-[550px] h-[550px] bg-[#B89B72]/0.01 rounded-full blur-[100px] translate-x-1/3 -translate-y-1/4" />
       <div className="absolute bottom-0 left-0 -z-10 w-[450px] h-[450px] bg-[#B89B72]/0.01 rounded-full blur-[80px] -translate-x-1/4 translate-y-1/4" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-[42%_58%] gap-12 lg:gap-16 items-center">
-          
-          {/* Hero Content — Floating Frosted Premium Panel */}
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="w-full bg-[rgba(16,16,16,0.78)] backdrop-blur-[14px] border border-[rgba(255,255,255,0.08)] rounded-[1.5rem] xs:rounded-[2rem] sm:rounded-[2.5rem] p-4 xs:p-6 sm:p-8 md:p-10 space-y-4 sm:space-y-6 relative z-10 max-w-full"
-          >
-            {/* Headline */}
-            <h1 className="text-[32px] xs:text-4xl sm:text-5xl lg:text-[2.6rem] xl:text-[2.85rem] font-display font-extrabold text-[#F5F1E8] leading-tight tracking-tight">
-              {t("title")}
-            </h1>
+      <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 px-4 sm:px-6 lg:grid-cols-[0.95fr_1.05fr] lg:px-8 w-full relative z-10">
+        
+        {/* Left Side: Existing Hero Content Card */}
+        <motion.div
+          initial={{ opacity: 0, x: -30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="w-full bg-[rgba(16,16,16,0.78)] backdrop-blur-[14px] border border-[rgba(255,255,255,0.08)] rounded-[1.5rem] xs:rounded-[2rem] sm:rounded-[2.5rem] p-6 sm:p-8 lg:p-10 space-y-6"
+        >
+          {/* Badge */}
+          <div className="inline-flex items-center gap-1.5 bg-[#B89B72]/10 border border-[#B89B72]/20 px-3 py-1 rounded-full w-fit">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#B89B72] animate-pulse" />
+            <span className="text-[10px] sm:text-xs font-bold text-[#B89B72] uppercase tracking-wider">
+              {t("badge")}
+            </span>
+          </div>
 
-            {/* Subheadline */}
-            <p className="text-sm xs:text-base md:text-[1.05rem] text-[#B8B2A7] leading-relaxed font-sans">
-              {t("subtitle")}
-            </p>
+          {/* Heading */}
+          <h1 className="text-3xl xs:text-4xl sm:text-5xl lg:text-[2.6rem] font-display font-extrabold text-[#F5F1E8] leading-tight tracking-tight">
+            {t("title")}
+          </h1>
 
-            {/* Bullet Highlights */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 pt-2 border-t border-[rgba(255,255,255,0.07)]">
-              <div className="flex items-center gap-2 text-[#F5F1E8]">
-                <CheckCircle2 className="h-4.5 w-4.5 sm:h-[18px] sm:w-[18px] text-[#B89B72] shrink-0" />
-                <span className="text-xs sm:text-sm font-medium">100% Verified Employers</span>
-              </div>
-              <div className="flex items-center gap-2 text-[#F5F1E8]">
-                <CheckCircle2 className="h-4.5 w-4.5 sm:h-[18px] sm:w-[18px] text-[#B89B72] shrink-0" />
-                <span className="text-xs sm:text-sm font-medium">Complete Emigration Support</span>
-              </div>
-              <div className="flex items-center gap-2 text-[#F5F1E8]">
-                <CheckCircle2 className="h-4.5 w-4.5 sm:h-[18px] sm:w-[18px] text-[#B89B72] shrink-0" />
-                <span className="text-xs sm:text-sm font-medium">Skilled & Industrial Experts</span>
-              </div>
-              <div className="flex items-center gap-2 text-[#F5F1E8]">
-                <CheckCircle2 className="h-4.5 w-4.5 sm:h-[18px] sm:w-[18px] text-[#B89B72] shrink-0" />
-                <span className="text-xs sm:text-sm font-medium">Rapid Talent Deployment</span>
-              </div>
-            </div>
+          {/* Subheading */}
+          <p className="text-sm xs:text-base text-[#B8B2A7] leading-relaxed font-sans">
+            {locale === "en" 
+              ? "Connecting skilled Indian manpower with certified employers across Europe, GCC, and Canada through safe, legal, and transparent recruitment."
+              : t("subtitle")}
+          </p>
 
-            {/* CTAs */}
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2 w-full">
-              <Button
-                onClick={() => scrollToForm("seeker")}
-                variant="primary"
-                size="lg"
-                className="w-full sm:w-auto justify-center gap-2.5 cursor-pointer whitespace-nowrap transition-all duration-300 py-3 sm:py-4 text-sm sm:text-base font-bold"
-              >
-                <Briefcase className="h-5 w-5 shrink-0 text-[#050505]" />
-                {t("applyBtn")}
-              </Button>
-              <Button
-                onClick={() => scrollToForm("employer")}
-                variant="secondary"
-                size="lg"
-                className="w-full sm:w-auto justify-center gap-2.5 transition-all duration-300 cursor-pointer whitespace-nowrap py-3 sm:py-4 text-sm sm:text-base font-bold"
-              >
-                <Users className="h-5 w-5 shrink-0 text-[#B89B72]" />
-                {t("hireBtn")}
-              </Button>
+          {/* Trust Points */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 pt-2 border-t border-[rgba(255,255,255,0.07)]">
+            <div className="flex items-center gap-2.5 text-[#F5F1E8]">
+              <CheckCircle2 className="h-4.5 w-4.5 text-[#B89B72] shrink-0" />
+              <span className="text-xs sm:text-sm font-medium">
+                {locale === "ml" ? "100% അംഗീകൃത തൊഴിൽദാതാക്കൾ" : "100% Verified Employers"}
+              </span>
             </div>
-          </motion.div>
- 
-          {/* Hero Visual — Large format borderless world map */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.98 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.1, delay: 0.15, ease: "easeOut" }}
-            className="w-full lg:absolute lg:right-[-2%] xl:right-[-4%] lg:w-[60%] xl:w-[62%] lg:h-[94%] lg:max-h-[780px] flex items-center justify-center z-0 lg:pointer-events-none relative"
-          >
-            {/* Soft blue radial glowing background map shadow */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 w-[550px] h-[550px] bg-[#B89B72]/0.01 rounded-full blur-[110px] pointer-events-none" />
-            <div className="w-full h-full pointer-events-auto">
-              <InteractiveWorldMap />
+            <div className="flex items-center gap-2.5 text-[#F5F1E8]">
+              <CheckCircle2 className="h-4.5 w-4.5 text-[#B89B72] shrink-0" />
+              <span className="text-xs sm:text-sm font-medium">
+                {locale === "ml" ? "പൂർണ്ണ എമിഗ്രേഷൻ പിന്തുണ" : "Complete Emigration Support"}
+              </span>
             </div>
-          </motion.div>
+            <div className="flex items-center gap-2.5 text-[#F5F1E8]">
+              <CheckCircle2 className="h-4.5 w-4.5 text-[#B89B72] shrink-0" />
+              <span className="text-xs sm:text-sm font-medium">
+                {locale === "ml" ? "വിദഗ്ദ്ധരായ വ്യാവസായിക വിദഗ്ദ്ധർ" : "Skilled & Industrial Experts"}
+              </span>
+            </div>
+            <div className="flex items-center gap-2.5 text-[#F5F1E8]">
+              <CheckCircle2 className="h-4.5 w-4.5 text-[#B89B72] shrink-0" />
+              <span className="text-xs sm:text-sm font-medium">
+                {locale === "ml" ? "ദ്രുതഗതിയിലുള്ള നിയമനം" : "Rapid Talent Deployment"}
+              </span>
+            </div>
+          </div>
+
+          {/* Buttons */}
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2 w-full">
+            <Button
+              onClick={() => scrollToForm("seeker")}
+              variant="primary"
+              size="lg"
+              className="w-full sm:w-auto justify-center gap-2.5 cursor-pointer whitespace-nowrap transition-all duration-300 py-3 sm:py-4 text-sm sm:text-base font-bold"
+            >
+              <Briefcase className="h-5 w-5 shrink-0 text-[#050505]" />
+              {t("applyBtn")}
+            </Button>
+            <Button
+              onClick={() => scrollToForm("employer")}
+              variant="secondary"
+              size="lg"
+              className="w-full sm:w-auto justify-center gap-2.5 transition-all duration-300 cursor-pointer whitespace-nowrap py-3 sm:py-4 text-sm sm:text-base font-bold"
+            >
+              <Users className="h-5 w-5 shrink-0 text-[#B89B72]" />
+              {t("hireBtn")}
+            </Button>
+          </div>
+        </motion.div>
+
+        {/* Right Side: Contained Visual Area with Animated Globe */}
+        <div className="flex w-full items-center justify-center lg:justify-end">
+          <HeroGlobe />
         </div>
+
       </div>
 
       {/* Floating Interactive WhatsApp Button (Bottom Right) */}

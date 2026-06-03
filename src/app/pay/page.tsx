@@ -184,13 +184,13 @@ function PaymentFlow() {
   // WhatsApp link builders
   // ----------------------------------------------------------------
   const getPaymentWhatsAppLink = (appId: string) => {
-    const phone = "918700917348";
+    const phone = "919874259915";
     const text = `Hi TricksNTrading, I want help with payment for my Application ID ${appId}.`;
     return `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
   };
 
   const getHelpWhatsAppLink = () => {
-    const phone = "918700917348";
+    const phone = "919874259915";
     const text = "Hi TricksNTrading, I need help with my application payment process.";
     return `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
   };
@@ -280,9 +280,10 @@ function PaymentFlow() {
           className="w-full justify-center gap-2 h-12 cursor-pointer font-extrabold"
           onClick={handleLookup}
           isLoading={isLooking}
+          disabled={isLooking}
         >
           <Search className="h-4 w-4" />
-          Find My Application
+          {isLooking ? "Finding..." : "Find My Application"}
         </Button>
 
         {/* Divider */}
@@ -513,9 +514,10 @@ function PaymentFlow() {
               className="w-full justify-center gap-2 h-12 text-base font-bold cursor-pointer shadow-none"
               onClick={handlePayment}
               isLoading={isPaying}
+              disabled={isPaying}
             >
               <CreditCard className="h-5 w-5" />
-              Confirm & Pay
+              {isPaying ? "Processing..." : "Confirm & Pay"}
             </Button>
           )}
 
@@ -560,8 +562,8 @@ function PaymentFlow() {
           <p className="text-xs text-[#7C756A] font-semibold uppercase tracking-wide">Need help with payment?</p>
           <p className="text-sm font-semibold text-[#F4F1EA] mt-1.5">
             Call or WhatsApp us at{" "}
-            <a href="tel:+918700917348" className="text-[#B89B72] hover:underline font-bold" translate="no">
-              +91 8700917348
+            <a href="tel:+919874259915" className="text-[#B89B72] hover:underline font-bold" translate="no">
+              +91 98742 59915
             </a>
           </p>
         </div>
@@ -687,7 +689,7 @@ export default function PayPage() {
     <>
       <Navbar />
 
-      <main className="flex-1 w-full bg-[#050505] text-[#F4F1EA] pt-32 pb-20 px-4">
+      <main className="flex-1 w-full bg-[#050505] text-[#F4F1EA] pt-32 pb-28 md:pb-20 px-4">
         <React.Suspense
           fallback={
             <div className="w-full max-w-md mx-auto bg-[#111111] rounded-3xl border border-white/8 shadow-none p-10 flex flex-col items-center gap-4">
